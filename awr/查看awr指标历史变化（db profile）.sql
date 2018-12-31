@@ -42,13 +42,13 @@ begin
       dbms_output.put_line(to_char(v_snap_time, 'YYYY-MM-DD HH24:MI:SS') ||
                            ',db_time_hour,' || round(v_dbtime / 60, 2) ||
                            ',cpu_time,' || round(v_dbcpu / 60, 2));
-      EXIT WHEN c_snap%NOTFOUND;
-    
     EXCEPTION
       WHEN NO_DATA_FOUND then
         null;
       
     end;
+    EXIT WHEN c_snap%NOTFOUND;
+  
   end loop;
   close c_snap;
 
