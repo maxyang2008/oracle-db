@@ -1,59 +1,60 @@
-declare
-  cursor c_snap is
-    select snap_id, begin_interval_time
-      from dba_hist_snapshot
-     where INSTANCE_NUMBER = 2
-     order by snap_id;
-  v_snap_id   number;
-  v_snap_time date;
-  v_dbtime    varchar2(20);
-  v_dbcpu     varchar2(20);
-begin
+DECLARE
+  CURSOR C_SNAP IS
+    SELECT SNAP_ID, BEGIN_INTERVAL_TIME
+      FROM DBA_HIST_SNAPSHOT
+     WHERE INSTANCE_NUMBER = 2
+     ORDER BY SNAP_ID;
+  V_SNAP_ID   NUMBER;
+  V_SNAP_TIME DATE;
+  V_DBTIME    VARCHAR2(20);
+  V_DBCPU     VARCHAR2(20);
+BEGIN
 
-  open c_snap;
+  DBMS_OUTPUT.PUT_LINE('DATETIME,DB_TIME_HOUR,DB_CPU_HOUR');
 
+  OPEN C_SNAP;
   LOOP
-    begin
-      fetch c_snap
-        into v_snap_id, v_snap_time;
+    BEGIN
+      FETCH C_SNAP
+        INTO V_SNAP_ID, V_SNAP_TIME;
     
-      SELECT Round(NVL((e.value - s.value), -1) / 60 / 1000000, 2)
-        into v_dbtime
-        FROM DBA_HIST_SYS_TIME_MODEL s, DBA_HIST_SYS_TIME_MODEL e
-       WHERE s.snap_id = v_snap_id
-         AND e.snap_id = v_snap_id + 1
-         anD e.dbid = s.dbid
-         AND e.instance_number = s.instance_number
-         AND e.instance_number = 2
-         AND s.stat_name = 'DB time'
-         AND e.stat_id = s.stat_id;
+      SELECT ROUND(NVL((E.VALUE - S.VALUE), -1) / 60 / 1000000, 2)
+        INTO V_DBTIME
+        FROM DBA_HIST_SYS_TIME_MODEL S, DBA_HIST_SYS_TIME_MODEL E
+       WHERE S.SNAP_ID = V_SNAP_ID
+         AND E.SNAP_ID = V_SNAP_ID + 1
+         AND E.DBID = S.DBID
+         AND E.INSTANCE_NUMBER = S.INSTANCE_NUMBER
+         AND E.INSTANCE_NUMBER = 1
+         AND S.STAT_NAME = 'DB time'
+         AND E.STAT_ID = S.STAT_ID;
     
-      SELECT Round(NVL((e.value - s.value), -1) / 60 / 1000000, 2)
-        into v_dbcpu
-        FROM DBA_HIST_SYS_TIME_MODEL s, DBA_HIST_SYS_TIME_MODEL e
-       WHERE s.snap_id = v_snap_id
-         AND e.snap_id = v_snap_id + 1
-         anD e.dbid = s.dbid
-         AND e.instance_number = s.instance_number
-         AND e.instance_number = 2
-         AND s.stat_name = 'DB CPU'
-         AND e.stat_id = s.stat_id;
+      SELECT ROUND(NVL((E.VALUE - S.VALUE), -1) / 60 / 1000000, 2)
+        INTO V_DBCPU
+        FROM DBA_HIST_SYS_TIME_MODEL S, DBA_HIST_SYS_TIME_MODEL E
+       WHERE S.SNAP_ID = V_SNAP_ID
+         AND E.SNAP_ID = V_SNAP_ID + 1
+         AND E.DBID = S.DBID
+         AND E.INSTANCE_NUMBER = S.INSTANCE_NUMBER
+         AND E.INSTANCE_NUMBER = 1
+         AND S.STAT_NAME = 'DB CPU'
+         AND E.STAT_ID = S.STAT_ID;
     
-      dbms_output.put_line(to_char(v_snap_time, 'YYYY-MM-DD HH24:MI:SS') ||
-                           ',db_time_hour,' || round(v_dbtime / 60, 2) ||
-                           ',cpu_time,' || round(v_dbcpu / 60, 2));
+      DBMS_OUTPUT.PUT_LINE(TO_CHAR(V_SNAP_TIME, 'YYYY-MM-DD HH24:MI:SS') ||
+                           ',' || ROUND(V_DBTIME / 60, 2) ||
+                           ',' || ROUND(V_DBCPU / 60, 2));
     EXCEPTION
-      WHEN NO_DATA_FOUND then
-        null;
+      WHEN NO_DATA_FOUND THEN
+        NULL;
       
-    end;
-    EXIT WHEN c_snap%NOTFOUND;
+    END;
+    EXIT WHEN C_SNAP%NOTFOUND;
   
-  end loop;
-  close c_snap;
+  END LOOP;
+  CLOSE C_SNAP;
 
 EXCEPTION
-  WHEN NO_DATA_FOUND then
-    null;
+  WHEN NO_DATA_FOUND THEN
+    NULL;
   
-end;
+END;
