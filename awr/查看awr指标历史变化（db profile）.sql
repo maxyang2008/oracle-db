@@ -3,6 +3,8 @@ DECLARE
     SELECT SNAP_ID, BEGIN_INTERVAL_TIME
       FROM DBA_HIST_SNAPSHOT
      WHERE INSTANCE_NUMBER = 2
+       AND BEGIN_INTERVAL_TIME >
+           TO_DATE('2018-12-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS')
      ORDER BY SNAP_ID;
   V_SNAP_ID   NUMBER;
   V_SNAP_TIME DATE;
@@ -25,7 +27,7 @@ BEGIN
          AND E.SNAP_ID = V_SNAP_ID + 1
          AND E.DBID = S.DBID
          AND E.INSTANCE_NUMBER = S.INSTANCE_NUMBER
-         AND E.INSTANCE_NUMBER = 1
+         AND E.INSTANCE_NUMBER = 2
          AND S.STAT_NAME = 'DB time'
          AND E.STAT_ID = S.STAT_ID;
     
@@ -36,13 +38,13 @@ BEGIN
          AND E.SNAP_ID = V_SNAP_ID + 1
          AND E.DBID = S.DBID
          AND E.INSTANCE_NUMBER = S.INSTANCE_NUMBER
-         AND E.INSTANCE_NUMBER = 1
+         AND E.INSTANCE_NUMBER = 2
          AND S.STAT_NAME = 'DB CPU'
          AND E.STAT_ID = S.STAT_ID;
     
-      DBMS_OUTPUT.PUT_LINE(TO_CHAR(V_SNAP_TIME, 'YYYY-MM-DD HH24:MI:SS') ||
-                           ',' || ROUND(V_DBTIME / 60, 2) ||
-                           ',' || ROUND(V_DBCPU / 60, 2));
+      DBMS_OUTPUT.PUT_LINE(TO_CHAR(V_SNAP_TIME, 'YYYY-MM-DD HH24:MI:SS') || ',' ||
+                           ROUND(V_DBTIME / 60, 2) || ',' ||
+                           ROUND(V_DBCPU / 60, 2));
     EXCEPTION
       WHEN NO_DATA_FOUND THEN
         NULL;
