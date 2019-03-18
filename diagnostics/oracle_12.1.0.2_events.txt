@@ -1,0 +1,4315 @@
+			Oracle 12.1.0.2 Events
+
+Not all events are in the 10000 ... 10999 range. Manually reading oraus.msg to identify those outside that range is
+tedious, error-prone and likely missing some. The following is gathered based on Dennis Yurichev's event numbers at
+http://yurichev.com/non-wiki-files/blog/events/11.2.0.1.0_linux86_events.txt
+
+00829, 00000, "event to stress test self tuning SGA feature by forcing partial granules transfers"
+// *Document: NO
+// *Cause:
+// *Action:
+00831, 00000, "event to stress test self tuning SGA feature by doing random memory broker resizes"
+// *Document: NO
+// *Cause:
+// *Action:
+00833, 00000, "event to test cancellation and cache protection by pinning buffers for deferred mode requests"
+// *Document: NO
+// *Cause:
+// *Action:
+00834, 00000, "Simulate 4031 during an immediate mode request in auto-sga"
+// *Document: NO
+// *Cause:
+// *Action: Set _memory_management_tracing=23 to track this event.
+00835, 00000, "Simulate memory broker disabling for code coverage"
+// *Document: NO
+// *Cause:
+// *Action: It will be reenabled on next SGA_TARGET resize
+00836, 00000, "Simulate memory transfer from system memory for startup request"
+// *Document: NO
+// *Cause: For code coverage.
+// *Action: None.
+00837, 00000, "Specified value of MEMORY_TARGET greater than MEMORY_MAX_TARGET"
+// *Cause: The specified value of MEMORY_TARGET was greater than MEMORY_MAX_TARGET.
+// *Action: Set MEMORY_TARGET less than or equal to MEMORY_MAX_TARGET.
+00942, 00000, "table or view does not exist"
+// *Cause:
+// *Action:
+00943, 00000, "cluster does not exist"
+// *Cause:
+// *Action:
+00944, 00000, "insufficient number of clustered columns"
+// *Cause:
+// *Action:
+00945, 00000, "specified clustered column does not exist"
+// *Cause:
+// *Action:
+00946, 00000, "missing TO keyword"
+// *Cause:
+// *Action:
+00947, 00000, "not enough values"
+// *Cause:
+// *Action:
+00948, 00000, "ALTER CLUSTER statement no longer supported"
+// *Cause:
+// *Action:
+00950, 00000, "invalid DROP option"
+// *Cause:
+// *Action:
+00951, 00000, "cluster not empty"
+// *Cause:
+// *Action:
+00952, 00000, "missing GROUP keyword"
+// *Cause:
+// *Action:
+00953, 00000, "missing or invalid index name"
+// *Cause: An index name of the form [ <identifier> . ] <identifier> is
+//	  expected but not present. If OIDINDEX clause, index name must be
+//        <identifier>
+// *Action:  Enter an appropriate index name.
+00954, 00000, "missing IDENTIFIED keyword"
+// *Cause:
+// *Action:
+00955, 00000, "name is already used by an existing object"
+// *Cause:
+// *Action:
+00956, 00000, "missing or invalid auditing option"
+// *Cause:  AUDIT or NOAUDIT statement contains an invalid auditing option.
+// *Action:  Use a valid option.
+00957, 00000, "duplicate column name"
+// *Cause:
+// *Action:
+01227, 00000, "log %s is inconsistent with other logs"
+// *Cause: The log file in the accompanying error is inconsistent with the 
+//         contents of other logs given in the CREATE CONTROLFILE command.
+//         Either a file header is corrupted, or some file is an old copy
+//         rather than the current version. The problem may not be with the
+//         log listed since all that can be detected is that there is an
+//         inconsistancy. All log files listed in the command must be the
+//         current versions of the online logs.
+//*Action: Find the correct online logs or use the RESETLOGS option.
+01229, 00000, "data file %s is inconsistent with logs"
+// *Cause: The data file in the accompanying error is inconsistent with the 
+//         contents of the logs given in the CREATE CONTROLFILE command.
+//         The most likely cause is that one or more of the online logs
+//         was missing from the command. It is also possible that one or
+//         more of the logs is an old copy rather than the current version.
+//         All online log files must be listed in the command and must be the
+//         current versions of the online logs.
+//*Action: Find the correct online logs or use the RESETLOGS option.
+01348, 00000, "LogMiner testing event"
+// *Cause: 
+// *Action: 
+01349, 00000, "LogMiner tracing event"
+// *Cause: 
+// *Action: 
+01354, 00000, "Supplemental log data must be added to run this command"
+// *Cause:  An attempt was made to perform an operation that required
+//          that supplemental log data be enabled.
+// *Action: Execute a command such as
+//            ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
+//          and then reissue the command that failed with this error.
+01376, 00000, "LogMiner testing event"
+// *Cause: 
+// *Action: 
+01399, 00000, "LogMiner public event"
+// *Cause: 
+// *Action: 
+01709, 00000, "program does not exist"
+// *Cause:
+// *Action:
+01710, 00000, "missing OF keyword"
+// *Cause:
+// *Action:
+02321, 00000, "event for nested table equipartition"
+// *Document: NO
+// *Cause:
+// *Action:
+08105, 00000, "Oracle event to turn off smon cleanup for online index build"
+// *Cause:  set this event only under the supervision of Oracle development
+// *Action: debugging only 
+08110, 00000, "Oracle event to test SMON cleanup for online index build "
+// *Cause:  Oracle Kernel test only 
+// *Action: Donot set this event(for test only)
+10000, 00000, "control file debug event, name 'control_file'"
+// *Document: NO
+// *Cause:
+// *Action:
+10001, 00000, "control file crash event1"
+// *Document: NO
+// *Cause:
+// *Action:
+10005, 00000, "trace latch operations for debugging"
+// *Document: NO
+// *Cause:
+// *Action: Enable tracing for various latch operations
+// *Comment:
+//    level 1 - trace latch gets and frees
+//    level 2 - protect/unprotect latch recovery areas
+//    level 4 - trace multiple posts by processes when latch is freed
+//    level 8 - signal error on bad latch waits
+//
+10007, 00000, "log switch debug crash after new log select, thread %s"
+// *Document: NO
+// *Cause:
+// *Action: level 1 - closed thread only
+//          level 2 - open thread only
+//          level 3 - open or closed thread
+10008, 00000, "log switch debug crash after new log header write, thread %s"
+// *Document: NO
+// *Cause:
+// *Action: level 1 - closed thread only
+//          level 2 - open thread only
+//          level 3 - open or closed thread
+10009, 00000, "log switch debug crash after old log header write, thread %s"
+// *Document: NO
+// *Cause:
+// *Action: level 1 - closed thread only
+//          level 2 - open thread only
+//          level 3 - open or closed thread
+10010, 00000, "Begin Transaction"
+// *Cause:
+// *Action:
+10011, 00000, "End   Transaction"
+// *Cause:
+// *Action:
+10012, 00000, "Abort Transaction"
+// *Cause:
+// *Action:
+10014, 00000, "Roll Back to Save Point"
+// *Cause:
+// *Action:
+10015, 00000, "Undo Segment Recovery"
+// *Cause:
+// *Action:
+10017, 00000, "Undo Segment Wrap"
+// *Cause:
+// *Action:
+10018, 00000, "Data Segment Create"
+// *Cause:
+// *Action:
+10019, 00000, "Turn off data/space search cache"
+// *Cause:
+// *Action:
+10022, 00000, "trace ktsgsp"
+// *Cause:
+// *Action:
+10023, 00000, "Create Save Undo Segment"
+// *Cause:
+// *Action:
+10024, 00000, "Write to Save Undo"
+// *Cause:
+// *Action:
+10026, 00000, "Apply Save Undo"
+// *Cause:
+// *Action:
+10027, 00000, "Specify Deadlock Trace Information to be Dumped"
+// *Cause:
+// *Action: The level is a bitmask that can be used as follows:
+//          0x01 - Do NOT produce a processstate (default is to dump this)
+//          0x02 - Dump a systemstate
+//          0x04 - Dump short stacks of all processes
+//
+10028, 00000, "Dump trace information during lock / resource latch cleanup"
+// *Cause:
+// *Action: The level is a bitmask that can be used as follows:
+//          0x01 - Dump information during resource cleanup
+//          0x02 - Dump information during lock cleanup
+//
+10029, 00000, "session logon (KSU)"
+// *Cause:
+// *Action:
+10030, 00000, "session logoff (KSU)"
+// *Cause:
+// *Action:
+10031, 00000, "sort debug event (S*)"
+// *Cause:
+// *Document: NO
+// *Action:  Set this event only under the supervision of Oracle development.
+//           Trace level is a bitfield.
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x0001       Trace sort auto memory management requirements
+//  0x0002       Dump sort subheaps before freeing or resetting
+//  0x0004       Trace use of new vs old sort
+//  0x0008       Reserved for sort IO tracing
+//  0x0010       Disable storing duplicates in linked list (also disables
+//                part of top n rank optimization)
+//  0x0020       trace and debug sort spill statistics
+//  0x0040       sleep 2 sec after each sort run creation for QA testing
+//  0x0080       Trace cluster-by-rowid (CBRID) sort
+//
+10032, 00000, "sort statistics (SOR*)"
+// *Document: NO
+// *Cause:
+// *Action:  Set this event only under the supervision of Oracle development.
+//           Trace level is a bitfield.
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x01         Output sort statistics in the trace file at the end of sort.
+//  0x02         Level 1 plus print more information as the sort progresses.
+//  0x04         Level 2 plus dump extra information (track IOs).
+//
+10033, 00000, "sort run information (SRD*/SRS*)"
+// *Cause:
+// *Action:
+10035, 00000, "Write parse failures to alert log file"
+// *Cause:
+10036, 00000, "create remote row source (QKANET)"
+// *Cause:
+// *Action:
+10037, 00000, "allocate remote row source (QKARWS)"
+// *Cause:
+// *Action:
+10039, 00000, "type checking (OPITCA)"
+// *Cause:
+// *Action:
+10040, 00000, "disable result-cache"
+// *Cause:
+// *Action:
+10041, 00000, "dump undo records skipped"
+// *Cause:
+// *Action:
+10043, 00000, "check consistency of owner/waiter/converter lists in KSQ"
+// *Cause:
+// *Action:
+10044, 00000, "free list undo operations"
+// *Cause:
+// *Action:
+10045, 00000, "free list update operations - ktsrsp, ktsunl"
+// *Cause:
+// *Action:
+10046, 00000, "enable SQL statement timing"
+// *Cause:
+// *Action:
+10047, 00000, "trace switching of sessions"
+// *Cause:
+// *Action:
+10048, 00000, "Undo segment shrink"
+// *Cause:
+// *Action:
+10049, 00000, "protect library cache memory heaps"
+// *Cause:
+// *Action: Use the OS memory protection (if available) to protect library
+//          cache memory heaps that are pinned.
+10050, 00000, "sniper trace"
+// *Cause:
+// *Action:
+10051, 00000, "trace OPI calls"
+// *Cause:
+// *Action:
+10052, 00000, "don't clean up obj$"
+// *Cause:
+// *Action:
+10054, 00000, "CBO Enable optimizer trace for recursive statement (RPI)"
+// *Cause:
+// *Action:
+10056, 00000, "dump analyze stats (kdg)"
+// *Cause:
+// *Action:
+10057, 00000, "suppress file names in error messages"
+// *Cause:
+// *Action:
+10059, 00000, "simulate error in logfile create/clear"
+// *Cause:
+// *Action:
+10060, 00000, "CBO Enable predicate dump"
+// *Cause:
+// *Action:
+10061, 00000, "disable SMON from cleaning temp segment"
+// *Cause:
+// *Action:
+10062, 00000, "disable usage of OS Roles in osds"
+// *Cause:
+// *Action:
+10063, 00000, "disable usage of DBA and OPER privileges in osds"
+// *Cause:
+// *Action:
+10064, 00000, "thread enable debug crash level %s, thread %s"
+// *Document: NO
+// *Cause:
+// *Action: level 1 - after new current log header written
+//          level 2 - after current log  committed
+//          level 3 - after redo generation complete
+10066, 00000, "simulate failure to verify file"
+// *Document: NO
+// *Cause:
+// *Action: level is file number to fail verification
+10067, 00000, "force redo log checksum errors - block number"
+// *Document: NO
+// *Cause:
+// *Action: level is block number to corrupt
+10068, 00000, "force redo log checksum errors - file number"
+// *Document: NO
+// *Cause:
+// *Action: level is file number to corrupt
+10070, 00000, "force datafile checksum errors - block number"
+// *Document: NO
+// *Cause:
+// *Action: level is block number to corrupt
+10071, 00000, "force datafile checksum errors - file number"
+// *Document: NO
+// *Cause:
+// *Action: level is file number to corrupt
+10073, 00000, "latch cleanup tracing"
+// *Document: NO
+// *Cause:
+// *Action: Enable latch cleanup tracing.
+// *Comment:
+//    level 1 - PMON cleanup, in-flux latches only
+//    level 2 - PMON cleanup, all latches
+//    level 3 - all cleanup
+//
+10074, 00000, "default trace function mask for kst"
+// *Cause:
+// *Action:
+10075, 00000, "CBO Disable outer-join to regular join conversion"
+// *Cause:
+// *Action:
+10076, 00000, "CBO Enable cartesian product join costing"
+// *Cause:
+// *Action:
+10077, 00000, "CBO Disable view-merging optimization for outer-joins"
+// *Cause:
+// *Action:
+10078, 00000, "CBO Disable constant predicate elimination optimization"
+// *Cause:
+// *Action:
+10079, 00000, "trace data sent/received via SQL*Net"
+// *Cause:
+// *Action: level 1 - trace network ops to/from client
+//          level 2 - in addition to level 1, dump data
+//          level 4 - trace network ops to/from dblink
+//          level 8 - in addition to level 4, dump data
+10081, 00000, "segment High Water Mark has been advanced"
+// *Cause:
+// *Action:
+10084, 00000, "free list becomes empty"
+// *Cause:
+// *Action:
+10086, 00000, "CBO Enable error if kko and qka disagree on oby sort"
+// *Cause:
+// *Action:
+10087, 00000, "disable repair of media corrupt data blocks"
+// *Document: NO
+// *Cause:
+// *Action:
+10088, 00000, "CBO Disable new NOT IN optimization"
+// *Document: NO
+// *Cause:
+// *Action:
+10089, 00000, "CBO Disable index sorting"
+// *Document: NO
+// *Cause:
+// *Action:
+10090, 00000, "invoke other events before crash recovery"
+// *Document: NO
+// *Cause:
+// *Action:
+10091, 00000, "CBO Disable constant predicate merging"
+// *Cause:
+// *Action:
+10092, 00000, "CBO Disable hash join"
+// *Cause:
+// *Action:
+10093, 00000, "CBO Enable force hash joins"
+// *Cause:
+// *Action:
+10094, 00000, "before resizing a data file"
+// *Document: NO
+// *Cause:
+// *Action:
+10095, 00000, "dump debugger commands to trace file"
+// *Document: NO
+// *Cause:
+// *Action:
+10096, 00000, "after the cross instance call when resizing a data file"
+// *Document: NO
+// *Cause:
+// *Action:
+10097, 00000, "after generating redo when resizing a data file"
+// *Document: NO
+// *Cause:
+// *Action:
+10098, 00000, "after the OS has increased the size of a data file"
+// *Document: NO
+// *Cause:
+// *Action:
+10099, 00000, "after updating the file header with the new file size"
+// *Document: NO
+// *Cause:
+// *Action:
+10100, 00000, "after the OS has decreased the size of a data file"
+// *Document: NO
+// *Cause:
+// *Action:
+10101, 00000, "DBWR refresh fails on cross instance resize call"
+// *Document: NO
+// *Cause:
+// *Action:
+10102, 00000, "switch off anti-joins"
+// *Cause:
+// *Action:
+10103, 00000, "CBO Disable hash join swapping"
+// *Cause:
+// *Action:
+10104, 00000, "dump hash join statistics to trace file"
+// *Cause:
+// *Action:
+10105, 00000, "CBO Enable constant pred trans and MPs w WHERE-clause"
+// *Cause:
+// *Action:
+10106, 00000, "CBO Disable evaluating correlation pred last for NOT IN"
+// *Cause:
+// *Action:
+10107, 00000, "CBO Always use bitmap index"
+// *Cause:
+// *Action:
+10108, 00000, "CBO Don't use bitmap index"
+// *Cause:
+// *Action:
+10109, 00000, "CBO Disable move of negated predicates"
+// *Cause:
+// *Action:
+10110, 00000, "CBO Try index rowid range scans"
+// *Cause:
+// *Action:
+10111, 00000, "Bitmap index creation switch"
+// *Cause:
+// *Action:
+10112, 00000, "Bitmap index creation switch"
+// *Cause:
+// *Action:
+10114, 00000, "Bitmap index creation switch"
+// *Cause:
+// *Action:
+10115, 00000, "CBO Bitmap optimization use maximal expression"
+// *Cause:
+// *Action:
+10116, 00000, "CBO Bitmap optimization switch"
+// *Cause:
+// *Action:
+10118, 00000, "CBO Enable hash join costing "
+// *Cause:
+// *Action:
+10119, 00000, "QKA Disable GBY sort elimination"
+// *Cause:
+// *Action:
+10120, 00000, "generate relative file # different from absolute"
+// *Cause:
+// *Action:
+10121, 00000, "CBO Don't sort bitmap chains"
+// *Cause:
+// *Action:
+10122, 00000, "Disable transformation of count(col) to count(*)"
+// *Cause:
+// *Action:
+10124, 00000, "Force creation of segmented arrays by kscsAllocate"
+// *Cause:
+// *Action:
+10125, 00000, "Disable remote sort elimination"
+// *Cause:
+// *Action:
+10126, 00000, "Debug oracle java xa"
+// *Cause:
+// *Action:
+10127, 00000, "Disable remote query block operation"
+// *Cause:
+// *Action:
+10128, 00000, "Dump Partition Pruning Information"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x0001       dump pruning decriptor for each partitioned object
+//  0x0002       dump partition iterators
+//  0x0004       dump optimizer decisions about partition-wise join
+//  0x0008       dump rowid range scan pruning information
+10129, 00000, "Alter histogram lookup for remote queries"
+// *Cause:
+// *Action:
+10130, 00000, "sort disable readaheads"
+// *Cause:
+// *Action:
+10131, 00000, "CONNECT BY debug event"
+// *Document: NO
+// *Cause:
+// *Action:  Set this event only under the supervision of Oracle development.
+//           Trace level is a bit field.
+// 
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x0001       Enable use of CONNECT BY cost-based transformation for
+//                queries with subqueries in the START WITH clause
+//  0x0002       Enable use of CONNECT BY cost-based transformation for
+//                queries with subqueries in the CONNECT BY clause
+//  0x0004       Do filtering only (print rows produced by filtering stage)
+//
+10132, 00000, "dump plan after compilation"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development
+10133, 00000,    "testing for SQL Memory Management"
+// *Cause:
+// *Action: never set this event
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x0001       do not unregister work areas at instance level
+10134, 00000,    "tracing for SQL Memory Management for session"
+// *Cause:
+// *Action: never set this event
+//
+//  This event can be turned on globally by seting trace name sqlmem_tracing
+//  with the same set of levels with bit one set to 1
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x0001       Not used (used for global setting)
+//  0x0002       IMM level register/unregister
+10136, 00000, "CBO turn off fix for bug 1089848"
+// *Cause:
+// *Action:
+10137, 00000, "CBO turn off fix for bug 1344111"
+// *Cause:
+// *Action:
+10138, 00000, "CBO turn off fix for bug 1577003"
+// *Cause:
+// *Action:
+10140, 00000, "CBO turn off fix for bug 1332980"
+// *Cause:
+// *Action:
+10141, 00000, "CBO disable additional keys for inlist in bitmap optimization"
+// *Cause:
+// *Action:
+10142, 00000, "CBO turn off advanced OR-expansion checks"
+// *Cause:
+// *Action:
+10144, 00000, "CBO turn off cost based selection of bji over bsj subquery"
+// *Cause:
+// *Action:
+10149, 00000, "allow the creation of constraints with illegal date constants"
+// *Cause:
+// *Action:
+10150, 00000, "import exceptions"
+// *Document: NO
+// *Cause:
+// *Action:   This should never be set by users.  It is used by import to
+//            allow certain commands to succeed, when for normal users they
+//            would fail.  An example is to allow grants on invalid views.
+10152, 00000, "CBO don't consider function costs in plans"
+// *Cause:
+// *Action:
+10154, 00000, "Switch to disallow synonyms in DDL statements"
+// *Cause:
+// *Action:
+10155, 00000, "CBO disable generation of transitive OR-chains"
+// *Cause:
+// *Action:
+10156, 00000, "CBO disable index fast full scan"
+// *Cause:
+// *Action:
+10157, 00000, "CBO disable index access path for in-list"
+// *Cause:
+// *Action:
+10158, 00000, "CBO preserve predicate order in post-filters"
+// *Cause:
+// *Action:
+10159, 00000, "CBO disable order-by sort pushdown into domain indexes"
+// *Cause:
+// *Action:
+10160, 00000, "CBO disable use of join index"
+// *Cause:
+// *Action:
+10161, 00000, "CBO recursive semi-join on/off-switch"
+// *Cause:
+// *Action:
+10162, 00000, "CBO join-back elimination on/off-switch"
+// *Cause:
+// *Action:
+10163, 00000, "CBO join-back elimination on/off-switch"
+// *Cause:
+// *Action:
+10164, 00000, "CBO disable subquery-adjusted cardinality fix"
+// *Cause:
+// *Action:
+10165, 00000, "mark session for special handling during instance administration"
+// *Document: NO
+// *Cause:
+// *Action:  Turn on this event in a session to mark the session as special
+//           so that it can be either killed or ignored during instance
+//           administration operations such as shutdown normal and standby
+//           role transitions. 
+//
+//           It is provided for the Oracle Enterprise Manager an other similar
+//           tools.
+//
+//  The level is interpreted as follows
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//      0       Treat this session as a normal session. This clears the 
+//              special bits which may have been set by other levels of this
+//              event.
+//      1       Kill this session during shutdown normal
+//      2       Ignore this session during database close
+//      3       Ignore this session during standby role transitions
+//   >= 4       Reserved for future use
+10166, 00000, "trace long operation statistics updates"
+// *Cause:
+// *Action:
+10167, 00000, "CBO use old index MIN/MAX optimization"
+// *Cause:
+// *Action:
+10168, 00000, "CBO disable single-table predicate predicate generation"
+// *Cause:
+// *Action:
+10169, 00000, "CBO disable histograms for multi partitions"
+// *Cause:
+// *Action:
+10170, 00000, "CBO use old bitmap costing"
+// *Cause:
+// *Action:
+10171, 00000, "CBO disable transitive join predicates"
+// *Cause:
+// *Action:
+10172, 00000, "CBO force hash join back"
+// *Cause:
+// *Action:
+10174, 00000, "view join-back elimination switch"
+// *Cause:
+// *Action:
+10175, 00000, "CBO star transformation switch"
+// *Cause:
+// *Action:
+10176, 00000, "CBO colocated join switch"
+// *Cause:
+// *Action:
+10177, 00000, "CBO colocated join switch"
+// *Cause:
+// *Action:
+10178, 00000, "CBO turn off hash cluster filtering through memcmp"
+// *Cause:
+// *Action:
+10180, 00000, "temp table transformation print error messages"
+// *Cause:
+// *Action:
+10181, 00000, "CBO disable multi-column in-list processing"
+// *Cause:
+// *Action:
+10182, 00000, "CBO disable generation of implied predicates"
+// *Cause:
+// *Action:
+10183, 00000, "CBO disable cost rounding"
+// *Cause:
+// *Action:
+10184, 00000, "CBO disable OR-exp if long inlist on bitmap column"
+// *Cause:
+// *Action:
+10185, 00000, "CBO force index joins"
+// *Cause:
+// *Action:
+10186, 00000, "CBO disable index join"
+// *Cause:
+// *Action:
+10187, 00000, "CBO additional index join switch"
+// *Cause:
+// *Action:
+10189, 00000, "CBO turn off FFS null fix"
+// *Cause:
+// *Action:
+10190, 00000, "Analyze use old frequency histogram collection and density"
+// *Cause:
+// *Action:
+10192, 00000, "nopushdown when number of groups exceed number of rows"
+// *Cause:
+// *Action:
+10193, 00000, "Force repeatable sampling with specified seed"
+// *Cause:
+// *Action:
+10194, 00000, "CBO disable new LIKE selectivity heuristic"
+// *Cause:
+// *Action:
+10195, 00000, "CBO don't use check constraints for transitive predicates"
+// *Cause:
+// *Action:
+10196, 00000, "CBO disable index skip scan"
+// *Cause:
+// *Action:
+10197, 00000, "CBO force index skip scan"
+// *Cause:
+// *Action:
+10200, 00000, "consistent read buffer status"
+// *Cause:
+// *Action:
+10201, 00000, "consistent read undo application"
+// *Cause:
+// *Action:
+10202, 00000, "consistent read block header"
+// *Cause:
+// *Action:
+10203, 00000, "block cleanout"
+// *Cause:
+// *Action:
+10204, 00000, "signal recursive extend"
+// *Cause:
+// *Action:
+10205, 00000, "row cache debugging"
+// *Cause:
+// *Action:
+10206, 00000, "transaction table consistent read"
+// *Cause:
+// *Action:
+10207, 00000, "consistent read transactions' status report"
+// *Cause:
+// *Action:
+10209, 00000, "enable simulated error on control file"
+// *Cause:
+// *Action:
+10212, 00000, "check cluster integrity"
+// *Cause:
+// *Action:
+10213, 00000, "crash after control file write"
+// *Cause:
+// *Action:
+10214, 00000, "simulate write errors on control file"
+// *Cause:
+// *Action:
+10215, 00000, "simulate read errors on control file"
+// *Cause:
+// *Action:
+10216, 00000, "dump control file header"
+// *Cause:
+// *Action:
+10217, 00000, "debug sequence numbers"
+// *Cause:
+// *Action:
+10218, 00000, "dump uba of applied undo"
+// *Cause:
+// *Action:
+10220, 00000, "show updates to the transaction table"
+// *Cause:
+// *Action:
+10221, 00000, "show changes done with undo"
+// *Cause:
+// *Action:
+10222, 00000, "row cache"
+// *Cause:
+// *Action:
+10223, 00000, "transaction layer - turn on verification codes"
+// *Cause:
+// *Action:
+10224, 00000, "index block split/delete trace"
+// *Cause:
+// *Action:
+10225, 00000, "free/used extent row cache"
+// *Cause:
+// *Action:
+10226, 00000, "trace CR applications of undo for data operations"
+// *Cause:
+//  *Action:
+10227, 00000, "verify (multi-piece) row structure"
+// *Cause:
+// *Action:
+10228, 00000, "trace application of redo by kcocbk"
+// *Cause:
+// *Action:
+10229, 00000, "simulate I/O error against datafiles"
+// *Cause:
+// *Action:
+10230, 00000, "KSFD block repair test event"
+// *Cause:
+// *Action: Each level is dedicated to a particular ksfd client. When this 
+//          event is set, clients corresponding to the level simulate block
+//          verification failure.
+10231, 00000, "skip corrupted blocks on _table_scans_"
+// *Cause:
+// *Action: such blocks are skipped in table scans, and listed in trace files
+10232, 00000, "dump corrupted blocks symbolically when kcbgotten"
+// *Cause:
+// *Action: puts corrupted block in trace file
+10233, 00000, "skip corrupted blocks on index operations"
+// *Cause:
+// *Action: skip corrupted data and/or index blocks during index scans.
+//          information is logged to a trace file.
+10234, 00000, "trigger event after calling kcrapc to do redo N times"
+// *Document: NO
+// *Cause:
+// *Action: creates a file named 'crash'
+10235, 00000, "check memory manager internal structures"
+// *Cause:
+// *Action:
+10236, 00000, "dump redo on object no. or block type mismatch errors 1410/8103"
+// *Document: NO
+// *Cause:
+// *Action:
+10237, 00000, "simulate ^C (for testing purposes)"
+// *Cause:
+// *Action:
+10239, 00000, "multi-instance library cache manager"
+// *Cause:
+// *Action:
+10241, 00000, "remote SQL execution tracing/validation"
+// *Cause:
+// *Action:
+//          Level > 0   dump SQL generated for remote execution (OPIX)
+//          Level > 1   validate RPCs in SELECT statements
+10242, 00000, "suppress OER 2063 (for testing distrib w/o different error log)"
+// *Cause:
+// *Action:
+10243, 00000, "simulated error for test %s of K2GTAB latch cleanup"
+// *Cause: levels 1..6 for insert, 7..11 for delete
+// *Action:
+10244, 00000, "make tranids in error msgs print as 0.0.0 (for testing)"
+// *Cause: also makes "alter system enable distributed recovery" synchronous
+// *Action:
+10246, 00000, "print trace of PMON actions to trace file"
+// *Cause:
+// *Action:
+10247, 00000, "Turn on scgcmn tracing. (VMS ONLY)"
+// *Cause:
+// *Action:
+10248, 00000, "turn on tracing for dispatchers"
+// *Cause:
+// *Action:
+10249, 00000, "turn on tracing for multi-stated servers"
+// *Cause:
+// *Action:
+10251, 00000, "check consistency of transaction table and undo block"
+// MERGE: 10235 RENUMBERED TO 10251
+// *Cause:
+// *Action:
+10254, 00000, "trace cross-instance calls"
+// *Cause:
+// *Action:
+10255, 00000, "pl/sql parse checking"
+// *Cause:
+// *Action: sends all dml statements to pl/sql for parse and semantic check
+10257, 00000, "trace shared server load balancing"
+// *Cause:
+// *Action:
+10258, 00000, "force shared servers to be chosen round-robin"
+// *Cause:
+// *Action:
+10259, 00000, "get error message text from remote using explicit call"
+// *Cause: for npigem coverage testing (normally called only for V5 remote)
+// *Action:
+10261, 00000, "limit the size of the PGA heap"
+// *Cause:    The limit was one kilobyte times the level of the event. If the
+//            PGA grows bigger than this, signal an external error.
+// *Action:
+10262, 00000, "Don't check for memory leaks"
+// *Cause:    Setting this event to level one causes memory leak checking to
+//            be disabled.  Setting this event to any other non-zero number
+//            allows that number to be used as a threshold value when checking
+//            for memory leaks in the PGA, SGA, and UGA heaps.
+// *Action:
+10263, 00000, "Don't free empty PGA heap extents"
+// *Cause:    This is useful for debugging since watchpoints are lost on free
+// *Action:
+10265, 00000, "Keep random system generated output out of error messages"
+// *Cause:    so test system files don't diff
+// *Action:
+10267, 00000, "Inhibit KSEDMP for testing"
+// *Cause:  Some tests may generate internal or fatal errors on purpose.
+10268, 00000, "Don't do forward coalesce when deleting extents"
+// *Cause:    setting this event keeps kts from coalescing forward at each
+//            extent when dropping a temp segment.
+// *Action:
+10269, 00000, "Don't do coalesces of free space in SMON"
+// *Cause:    setting this event prevents SMON from doing free space coalesces
+10270, 00000, "Debug shared cursors"
+// *Cause: Enables debugging code in shared cursor management modules
+// *Action:
+10277, 00000, "Cursor sharing (or not) related event (used for testing)"
+// *Cause:
+// *Action:
+10279, 00000, "Simulate block corruption in kdb4chk"
+// *Cause:
+// *Action:
+10280, 00000, "Internal testing - segmentation fault during crash recovery"
+// *Cause:
+// *Action:
+10281, 00000, "maximum time to wait for process creation"
+// *Cause: used to override the default SPMXWAIT, level = timeout in sec.
+// *Action:
+10282, 00000, "Inhibit signalling of other backgrounds when one dies"
+// *Cause: Used in KSB
+// *Action:
+10284, 00000, "simulate zero/infinite asynch I/O buffering"
+// *Cause: Used in KCF, level=1 out of space (red), level=2 infinite (green)
+// *Action:
+10285, 00000, "Simulate control file header corruption"
+// *Cause:
+// *Action:  If set, will cause control file header verification to fail
+10286, 00000, "Simulate control file open error"
+// *Cause:
+// *Action:  If set, will cause the next control file open to have an error
+10287, 00000, "Simulate archiver error"
+// *Cause:
+// *Action: If set, next archive log will generate error
+10288, 00000, "Do not check block type in ktrget"
+// *Cause:
+// *Action: If set, don't do type check in ktrget.  This is a work-around
+//          for databases that have 0 as block type in some data blocks.
+10289, 00000, "Do block dumps to trace file in hex rather than fromatted"
+// *Cause:
+// *Action: If set, don't do formatted block dumps.  This is a work-around
+//          for block dump routines that accvio when given badly corrupted
+//          blocks. It may also be useful for cases where the type is wrong.
+10290, 00000, "Internal sequence tracing event"
+// *Cause:
+// *Action: Internal Event - Should not be set unless directed by RDBMS DEV
+10291, 00000, "die in tbsdrv to test control file undo"
+// *Cause:
+// *Action: If this event is set, error OERI(10291) is signalled when
+//          issueing tablespace commands. The control file undo should be
+//          applied returning the control file to its previous state.
+10292, 00000, "hang analysis trace event"
+// *Document: NO
+// *Cause:
+// *Action: Enable validation of hang analysis callbacks
+// *Comment: The following levels may be combined:
+//           0x1 - dump errors to trace file through ksdwrf
+//           0x2 - dump errors to trace file as ORA-600 + 0x1
+//           0x4 - check for involuntary events without callbacks
+10293, 0000, "trace log switch media recovery checkpoints"
+// *Document: NO
+// *Cause:
+// *Action: Print alert log timestamps for the start and end of each log
+//          switch checkpoint during media recovery. This timing may prove
+//          useful in debugging recovery performance problems.
+10294, 00000, "ksrpc tracing"
+// *Cause:
+// *Action: If this event is set then ksrpc module generates tracing on each
+//          remote transfer
+10295, 00000, "die after file header update durning cf xact"
+// *Document: NO
+// *Cause:
+// *Action: If this event is set then some file header updates will
+//          be followed by an error 10295 to abort the command before
+//          the control file xact commits.
+10296, 00000, "disable ORA-379"
+// *Cause:
+// *Action: If this event is set then we will not signal ORA-379 for
+//          buffer cache deadlocks when all buffers in the cache
+//          are pinned.
+10298, 00000, "ksfd i/o tracing"
+// *Cause:
+// *Action: If this event is set then ksfd module generates tracing
+//          for each i/o request
+10299, 00000, "Trace prefetch tracking decisions made by CKPT"
+10302, 00000, "trace create or drop internal trigger"
+// *Document: NO
+// *Cause:
+// *Action:
+10303, 00000, "trace loading of library cache for internal triggers"
+// *Document: NO
+// *Cause:
+// *Action:
+10304, 00000, "trace replication trigger"
+// *Document: NO
+// *Cause:
+// *Action:
+10305, 00000, "trace updatable materialized view trigger"
+// *Document: NO
+// *Cause:
+// *Action:
+10306, 00000, "trace materialized view log trigger"
+// *Document: NO
+// *Cause:
+// *Action:
+10307, 00000, "trace RepCat execution"
+// *Document: NO
+// *Cause:
+// *Action:
+10308, 00000, "replication testing event"
+// *Document: NO
+// *Cause:
+// *Action:
+10309, 00000, "Trigger Debug event"
+// *Document: NO
+// *Cause:
+// *Action:
+// *Comment: This event replaces the earlier event number 10250
+//           which had multiple definitions
+10310, 00000, "trace synchronous change table trigger"
+// *Document: NO
+// *Cause:
+// *Action:
+10311, 00000, "Disable Flashback Table Timestamp checking"
+// *Document: NO
+// *Cause:
+// *Action:
+10314, 00000, "Enable extra stats gathering for CR"
+// *Document: NO
+// *Cause:
+// *Action:
+10316, 00000, "Events for extensible txn header, non zero ext header size"
+// *Document: NO
+// *Cause:
+// *Action:
+10317, 00000, "Events for extensible txn header, zero ext header size"
+// *Document: NO
+// *Cause:
+// *Action:
+10318, 00000, "Trace extensible txn header movements"
+// *Document: NO
+// *Cause:
+// *Action:
+10319, 00000, "Trace PGA statistics maintenance"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x0001       dump message in trace file when PGA stats are diverging
+//  0x0002       trace top-level PGA allocation and deallocation
+//  0x0004       always check if full/incremental stats are in sync
+//
+10320, 0000, "Enable data layer (kdtgrs) tracing of space management calls"
+// *Cause:
+// *Action:
+10321, 0000, "Datafile header verification debug failure."
+// *Document: NO
+// *Cause:
+// *Action: For testing purposes only.  Simulates a data file header
+//          verification error. See levels below:
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  1            Verification error for all files 
+//  2            Verification error for non-system files
+10322, 00000, "CBO don't simplify inlist predicates"
+// *Cause:
+// *Action:
+10323, 0000, "before committing an add datafile command"
+// *Cause:
+// *Action:
+10324, 0000, "Enable better checking of redo logs errors"
+// *Cause:
+// *Action: Raises internal errors when there are redo log errors
+// *Comment: Raises internal errors when there are redo log errors
+10325, 0000, "Trace control file record section expand and shrink operations"
+// *Document: NO
+// *Cause:
+// *Action:  trace control file record section expand and shrink operations to
+//           the alert file
+//
+10326, 00000, "clear logfile debug crash at %s, log %s"
+// *Document: NO
+// *Cause:
+// *Action: level 1 - after prepare, before clearing the log members
+//          level 2 - after clearing the log members, before final cf xaction
+//          level 3 - just before clearing member 1
+//          level 4 - just before clearing member 2
+10327, 00000, "simulate ORA-00235 error for testing"
+// *Document: NO
+// *Cause:
+// *Action:
+//
+10329, 00000, "simulate out-of-memory error during first pass of recovery"
+// *Document: NO
+// *Cause:
+// *Action: for testing only.
+//
+10330, 00000, "clear MTTR statistics in checkpoint progress record"
+// *Document: NO
+// *Cause:
+// *Action: clear MTTR statistics in this thread
+//
+10331, 00000, "simulate resilvering during recovery"
+// *Document: NO
+// *Cause:
+// *Action: for testing only.
+//
+10332, 00000, "force ALTER SYSTEM QUIESCE RESTRICTED command to fail"
+// *Document: NO
+// *Cause:
+// *Action: for testing only.
+//
+10333, 00000, "dump MTTR statistics each time it is updated"
+// *Document: NO
+// *Cause:
+// *Action: dump MTTR statistics in this thread each time it is updated
+//
+10334, 00000, "force FG to wait to be killed during MTTR advisory simulation"
+// *Document: NO
+// *Cause:
+// *Action: for testing only.
+//
+10335, 00000, "trace database open status"
+// *Document: NO
+// *Cause:
+// *Action: for debugging purpose
+//
+10338, 00000, "CBO don't use inlist iterator with function-based indexes"
+// *Cause:
+// *Action:
+10339, 00000, "CBO disable DECODE simplification"
+// *Cause:
+// *Action:
+10340, 00000, "Buffer queues sanity check for corrupted buffers"
+//*Document: NO
+//*Cause:
+//*Action: Check all buffer queues for corrupted buffer every 5 minutes
+//
+10341, 00000, "Simulate out of PGA memory in DBWR during object reuse"
+// *Cause:
+// *Action: checks that DBWR can still perform invalidatino
+// *Comment: only used during testing
+10342, 00000, "Raise unknown exception in ACQ_ADD when checkpointing"
+// *Cause:
+// *Action: should cause process to dump trace file and die
+// *Comment: This event is obsoleted, and can be reused for another test.
+10343, 00000, "Raise an out of memory exception-OER 4031 in ACQ_ADD"
+// *Cause:
+// *Action: For Backgrounds, try to handle checkpoint using reserved entries
+// *Comment: Only enabled during testing
+10345, 00000, "validate queue when linking or unlinking a buffer"
+// *Cause:
+// *Action: checks low RBA ordering of queue associated with latch
+// *Comment: Raises an error if low RBA ordering on queue is wrong
+10346, 00000, "check that all buffers for checkpoint have been written"
+// *Cause:
+// *Action: Scans the cache to see that all candidate buffers are written
+// *Comment: Usually only enabled for TESTING since it involves a cache scan
+10347, 00000, "dump active checkpoint entries and checkpoint buffers"
+// *Cause:
+// *Action: Prints the checkpoint queue and buffers to the trace file
+// *Comment: Usually only enabled for TESTING and code coverage
+10348, 00000, "test abnormal termination of process initiating file checkpoint"
+// *Document: NO
+// *Cause:
+// *Action: Causes abnormal termination of process starting a file checkpoint
+// *Comment: Only enabled for TESTING and code coverage
+10349, 00000, "do not allow ckpt to complete"
+// *Cause:
+// *Action:  disables checkpoint completion
+// *Comment: only enabled for TESTING
+10350, 00000, "Simulate more than one object & tsn id in object reuse"
+// *Cause:
+// *Action: checks that DBWR can service multiple object id's in reuse"
+// *Comment: only used during testing
+10351, 00000, "size of slots"
+// *Cause:
+// *Action:  sets the size of slots to use
+// *Comment: a slot is a unit of I/O and this factor controls the size
+// *Comment: of the IO.
+10352, 00000, "report direct path statistics"
+// *Cause:
+// *Action:  turns on direct path statistics
+// *Comment: reports statistics for direct path
+10353, 00000, "number of slots"
+// *Cause:
+// *Action:  sets a given number of slots to use
+// *Comment: a slot is a unit of I/O and this factor controls the number
+// *Comment: of outstanding I/Os.
+10354, 00000, "turn on direct read path for parallel query"
+// *Cause:
+// *Action:  enable direct read for parallel query
+10355, 00000, "turn on direct read path for scans"
+// *Cause:
+// *Action:  enable direct async read for scans
+10356, 00000, "turn on hint usage for direct read"
+// *Cause:
+// *Action:  enables using hint for direct async reads
+10357, 00000, "turn on debug information for direct path"
+// *Cause:
+// *Action:  turn on debug information for direct path
+10358, 00000, "Simulate out of PGA memory in cache advisory reset"
+// *Cause:
+// *Action: checks that CKPT can set the simulation to OFF
+// *Comment: only used during testing
+10359, 00000, "turn off updates to control file for direct writes"
+// *Cause:
+// *Action:  Control files won't get updated for direct writes for  LOBs
+//           when NOCACHE NOLOGGING is set. The only bad impact that it
+//           can have is that if you are using the recovery manager,
+//           it may affect a warning that says that the user should
+//           back everything up. Now the recovery manager won't know
+//           to tell you that the files that were updated with
+//           unrecoverable events should be backed up.
+10360, 0000, "enable dbwr consistency checking"
+// *Cause: internal use only
+// *Action: enables consistency checking of buffers written by
+//          dbwriter and consistency checking of LRU working sets
+10361, 00000, "check buffer change vector count consistency"
+// *Document: No
+// *Cause: internal use only
+// *Action: invoke buffer change vector count consistency every 5 minutes
+10362, 00000, "simulate a write error to take a file offline"
+// *Document: No
+// *Cause: internal use only
+// *Action: Enables testing of DBWR taking a file offline because of a
+//          write error.  The level is the absolute file number of the
+//          file to be taken offline when DBWR attemts to write to it.
+10363, 00000, "Simulate messaging error for fast object reuse/checkpoint"
+// *Document: No
+// *Cause: internal use only
+// *Action: Enables testing of fast object reuse/checkpoint fallback
+//          mechanism due to ksr message publishing issues.
+10364, 00000, "Do not clear GIMH_STC_SHUT_BEGIN state during shutdown"
+// *Document: No
+// *Cause: internal use only
+// *Action: Enables testing of shutdown begin event by not
+//          clearing GIMH_STC_SHUT_BEGIN state before shutdown completes.
+10365, 00000, "turn on debug information for adaptive direct reads"
+// *Cause:
+// *Action:  turn on debug information for adaptive direct reads
+10366, 00000, "kgnfs tracing"
+// *Cause:
+// *Action: If this event is set then kgnfs module generates debug tracing.
+10368, 00000, "maximum number of internal errors a process will tolerate"
+// *Cause:
+// *Action:  determines the maximum number of ORA-600s after which a
+//           process will commit suicide.
+10369, 00000, "test SQL monitoring feature"
+// *Cause:
+// *Action:  crash tests
+10370, 00000, "parallel query server kill event"
+// *Cause: internal use only
+// *Action: this event should never be set externally
+// *Comment: commands a slave to commit suicide, codes line
+10372, 00000, "parallel query server kill event proc"
+// *Cause: internal use only
+// *Action: this event should never be set externally
+// *Comment: commands a slave to commit suicide, codes proc & weapon
+10373, 00000, "parallel query server kill event"
+// *Cause: internal use only
+// *Action: this event should never be set externally
+// *Comment: commands a slave to commit suicide, code count & context
+10375, 00000, "turn on checks for statistics rollups"
+// *Cause:
+// *Action:  enables checks for stat rollup in QC
+// *Comment: verify that the rollup is being done accurately
+10377, 00000, "force slave allocation"
+// *Document: No
+// *Cause:
+// *Action:  Set this event only under the supervision of Oracle development.
+// *Comment: for testing only--force the allocation of slaves in certain nodes
+10378, 00000, "force hard process/range affinity"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development
+// *Comment: for testing only
+10380, 00000, "kxfp latch cleanup testing event"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development
+// *Comment: for testing only--indicates the server to which the latch
+//           cleanup key applies (0 for QC)
+10381, 00000, "kxfp latch cleanup testing event"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development
+// *Comment: for testing only--the latch cleanup key (the number of the
+//           LCTEST() call on which to kill the process)
+10383, 00000, "auto parallelization testing event"
+// *Cause:
+// *Action:  Set this event only under the supervision of Oracle development
+// *Comment: For testing only.  Trace level bits can be used in combination:
+//           1: parallelize every full table scan (kkfd.c)
+//           2: create every table/cluster parallel (prsc.c)
+//           4: create every table/cluster cache
+//           8: create every table/cluster cache partitions (overrides 4)
+10384, 00000, "parallel dataflow scheduler tracing"
+// *Cause:
+// *Action:   set this event only under the supervision of Oracle development
+// *Comment:  trace level is a bitfield (see kkrp.h)
+10385, 00000, "parallel table scan range sampling method"
+// *Cause:
+// *Action:   set this event only under the supervision of Oracle development
+// *Comment:  level: 0: (default) sample by random rowid
+//                   1: sample by first rows of partition ranges
+10386, 00000, "parallel SQL hash and range statistics"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development
+// *Comment: print kxfq hash and range statistics
+10390, 00000, "Trace parallel query slave execution"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development.
+//           trace level is a bitfield
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x0001       slave-side execution messages
+//  0x0002       coordinator-side execution messages
+//  0x0004       slave context state changes
+//  0x0008       slave rowid range bind variables and xty
+//
+//  0x0010       slave fetched rows as enqueued to TQ
+//  0x0020       coordinator wait reply handling
+//  0x0040       coordinator wait message buffering
+//  0x0080       slave dump timing
+//
+//  0x0100       coordinator dump timing
+//  0x0200       slave dump allocation file numbers
+//  0x0400       terse format for debug dumps
+//  0x0800       Trace CRI random sampling
+//
+//  0x1000       Trace signals
+//  0x2000       Trace PX granule operations
+//  0x4000       Force compilation by slave 0
+10391, 00000, "trace PX granule allocation/assignment"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x0001       dump summary of each object scanned in parallel
+//  0x0002       full dump of each object except extent map
+//  0x0004       full dump of each object including extent map
+//
+//  0x0010       dump summary of each granule generators
+//  0x0020       full dump of granule generators except granule instances
+//  0x0040       full dump of granule generators including granule instances
+//
+//  0x0080       dump system info
+//  0x0100       dump reference object for the query
+//  0x0200       gives timing in kxfralo
+//  0x0400       trace affinity module
+//  0x0800       trace granule allocation during query execution
+//
+//  0x1000       trace object flush
+//  0x2000       internal
+// *Comment: print details of PQ parallel granule allocation
+10392, 00000, "parallel query debugging bits"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development
+// *Comment: turn on/off various kxfp features (documentation in kxfp.c)
+10394, 00000, "generate a fake load to test adaptive and load balancing"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development
+// *Comment: generates a fake load for testing purposes
+10395, 00000, "adjust sample size for range table queues"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development
+// *Comment: use reduced sample size for testing only
+10397, 00000, "suppress verbose parallel coordinator error reporting"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development
+// *Comment: disable the ORA-12801 message when a parallel query
+//           server gets a SQL error, instead report the slave's
+//           actual error as if signaled in the foreground (for
+//           testing, to match sequential log files)
+10398, 00000, "enable timeouts in parallel query threads"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development
+// *Comment: level of this event indicates the number of seconds
+//           before timing out of a kxfpqdeq() call, after which
+//           an internal error will be signaled...for testing so
+//           that test suites don't wedge.
+10399, 00000, "trace buffer allocation"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development
+// *Comment: level indicates verbosity of tracing
+//           Level1: Buffer leak checking
+//           Level2: trace buffer init, chunk alloc, free and recovery
+//           Level3: trace buffer alloc & free
+10400, 00000, "turn on system state dumps for shutdown debugging"
+// *Cause:
+// *Action: Enables debugging code for shutdown problems (e.g., hangs)
+10401, 00000, "turn on IPC (ksxp) debugging"
+// *Cause:
+// *Action: Enables debugging code for IPC service layer (ksxp)
+10402, 00000, "turn on IPC (skgxp) debugging"
+// *Cause:
+// *Action: Enables debugging code for IPC layer (skgxp)
+10403, 00000, "fake CPU number for default degree of parallelism"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development
+// *Comment: level of this event indicates the number of CPUs you want to
+//           set to
+10404, 00000, "crash dbwr after write"
+// *Cause:
+// *Action:  set this event only to test mirror resilvering osds
+// *Comment: This event causes dbwr to crash after doing a write to
+//           a mirrored datafile. For use in tkbrmrt only.
+10405, 00000, "emulate broken mirrors"
+// *Cause:
+// *Action:  set this event to cause mirror resilvering on startup
+// *Comment: This event is set when starting up after a crash caused
+//           by OER(10404). It is used to persuade the recovery layer
+//           that a mirror was broken.
+10406, 00000, "enable datetime TIMESTAMP, INTERVAL datatype creation"
+// *Cause:
+// *Action:  set this event to enable datetime datatype creation
+// *Comment: This event is set when the user wants to create
+//           a datetime datatype column.  The compatible=8.1.0.0.0 parameter
+//           must also be set.
+10407, 00000, "enable datetime TIME datatype creation"
+// *Cause:
+// *Action:  set this event to enable datetime datatype creation
+// *Comment: This event is set when the user wants to create
+//           a datetime datatype column.  The compatible=8.1.0.0.0 parameter
+//           must also be set.
+10409, 00000, "enable granule memset and block invalidation at startup"
+// *Cause:
+// *Action:  set this event to enable the memset and invalidation
+// *Comment: This event is created to be the safe valve for
+//           startup speedup transaction
+10410, 00000, "trigger simulated communications errors in KSXP"
+// *Document: NO
+// *Cause:
+// *Action:  set this event to simulate communications errors to clients
+// *Comment: This event is set as 0xCIXXNNNN where C is the client id the
+//           the error will be generated to, I is the instance id the error
+//           will be generated for and NNNN is the minimum message sequence
+//           number for instance I.  An initial event value of C=0 indicates
+//           dynamic check of event
+10413, 00000, "force simulated error for testing purposes"
+// *Document: NO
+// *Cause: For testing only.
+// *Action: None.  For testing only.  Should never be set by customers.
+// *Comment:
+//    level  1: ALTER TABLESPACE...READ ONLY before kcftro
+//    level  2: ALTER TABLESPACE...READ ONLY after kcftro
+//    level  3: ALTER TABLESPACE...READ ONLY before kcfrdo, after waiting
+//    level  4: ALTER TABLESPACE...READ ONLY after kcfrdo
+//    level  5: ALTER TABLESPACE...READ ONLY after krcrtro
+//    level  6: ALTER TABLESPACE...READ ONLY after kqrpre to get lock on TS$
+//    level  7: ALTER TABLESPACE...READ ONLY after kqrpup to update TS$
+//    level  8: ALTER TABLESPACE...READ ONLY after ktucat to check other tx's
+//    level  9: ALTER TABLESPACE...READ ONLY after ktccrb to commit
+//    level 10: ALTER TABLESPACE...READ ONLY in kcfrdo, before checkpoint
+//
+10416, 00000, "disable fix for 2736734"
+// *Document: NO
+// *Cause:
+// *Action: Disable the fix for bug 2736734
+//
+10417, 00000, "limit 1 file per sbtinfo2() validation call"
+// *Document: NO
+// *Cause:
+// *Action: Prevent Oracle from passing multiple file handles to sbtinfo2(),
+//          in case the Media Management Software cannot properly support
+//          calls with multiple file names.
+10418, 00000, "disable re-creating tempfile"
+// *Document: NO
+// *Cause:
+// *Action: Prevent Oracle from automatically re-creating tempfile
+10419, 00000, "create tempfile without create_scn and time"
+// *Document: NO
+// *Cause: For testing only.
+// *Action: None. For testing only. Should never be set by customers.
+10420, 00000, "trace KSO OS-process operations"
+// *Document: NO
+// *Cause:
+// *Action: Trace KSO operations.
+10421, 00000, "enable dump from ksbwco if there is no reply"
+// *Document: NO
+// *Cause:
+// *Action: creates an error stack dump if ksbwco does not hear back.
+10422, 00000, "KSU debugging"
+// *Document: NO
+// *Cause:
+// *Action: Helps debug KSU issues (see ksu.h).
+10425, 00000, "enable global enqueue operations event trace"
+// *Document: NO
+// *Cause:
+// *Action: Dump trace for global enqueue operations.
+10426, 00000, "enable ges/gcs reconfiguration event trace"
+// *Document: NO
+// *Cause:
+// *Action: Dump trace for ges/gcs reconfiguration.
+10429, 00000, "enable tracing of global enqueue service IPC calls"
+// *Document: NO
+// *Cause:
+// *Action: Dump trace for global enqueue service IPC calls.
+10431, 00000, "enable verification messages on pi consistency"
+// *Document: NO
+// *Cause:
+// *Action: Send verification messages to check pi consistency
+10432, 00000, "enable tracing of global cache service fusion calls"
+// *Document: NO
+// *Cause:
+// *Action: Dump trace for global cache service fusion calls.
+10433, 00000, "global enqueue service testing event"
+// *Document: NO
+// *Cause:
+// *Action:
+//    Level:  == 6  to return out-of-memory when getting message buffer
+//    Level:  == 7  to suspend lmd for a short period of time
+//    Level:  == 8  to suspend lms for a short period of time
+//    Level:  == 9  to inject out-of-order dlm messages
+//    Level:  == 10 to delay direct sends on send proxies and
+//                  to force indirect sends on half of the
+//                  direct send messages
+10435, 00000, "enable tracing of global enqueue service deadlock detetction"
+// *Document: NO
+// *Cause:
+// *Action: Dump trace for global enqueue service deadlock detetction.
+10436, 00000, "enable global cache service duplicate ping checking"
+// *Document: NO
+// *Cause:
+// *Action: Enable global cache service duplicate ping checking
+10437, 00000, "enable trace of global enqueue service S optimized resources"
+// *Document: NO
+// *Cause:
+// *Action: Dump global cache service S optimized resources
+10440, 00000, "enable global enqueue service inquire resource modes trace"
+// *Document: NO
+// *Cause:
+// *Action: Dump trace for global enqueue service resource inquiry messages.
+10441, 00000, "enable diagnosibility daemon (DIAG) trace"
+// *Document: NO
+// *Cause:
+// *Action: Dump traces for DIAG.
+10442, 00000, "enable trace of kst for ORA-01555 diagnostics"
+// *Document: NO
+// *Cause:
+// *Action: Dump trace for ORA-01555 diagnostics
+10450, 00000, "signal ctrl-c in kdddca (drop column) after n rows"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: Set the level number to the number of rows before the error
+//           is signalled. The error will be ORA-1013 (ctrl-c)
+10451, 00000, "Force heap segment compression bypassing compatibility checks"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+//
+10453, 00000, "Dump compression statistics to trace file"
+// *Document: NO
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+//
+10454, 00000, "Disable column reordering during compression"
+// *Document: NO
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+//
+10455, 00000, "Do Compression Block Checking"
+// *Document: NO
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+//
+10460, 00000, "Perform backward tablescans for consistent read reduction"
+// *Cause:
+// *Action:
+//
+// Events 10461 - 10489 reserved for recovery, incl debugging and tracing
+//
+10461, 00000, "Simulate control file corruption during write operation"
+// *Cause:
+// *Action: If set, will cause control file header verification to fail
+//
+10462, 00000, "enable recovery debug module"
+// *Cause:
+// *Action: Set this event to enable recovery debug module.
+//          Recovery debug module does extra sanity checks on redo
+//          generation and dumps interesting information to trace
+//          if certain errors occur.
+//
+10463, 00000, "enable controlfile test"
+// *Document: NO
+// *Cause:
+// *Action: Set this event to enable controlfile sequence number dump
+//          at instance shutdown (level 1), future version controlfile
+//          compatibility test (level 2), or cf backup creation (level 3)
+//
+10464, 00000, "enable incremental checkpoint debug for split brain check"
+// *Document: NO
+// *Cause:
+// *Action: Set this event to enable checkpoint heartbeat tracing
+//
+10465, 00000, "force slave death during parallel crash recovery"
+// *Document: NO
+// *Cause:
+// *Action:
+//
+10466, 00000, "enable HARD check for block write"
+// *Document: NO
+// *Cause:
+// *Action: Set this event to enable HARD check for every block write.
+//
+10467, 00000, "amplify control file record expansion for testing"
+// *Document: NO
+// *Cause:
+// *Action: Set this event to amplify control file record expansion for testing
+//
+10468, 00000, "log writer debug module"
+// *Document: NO
+// *Cause:
+// *Action: Set this event to the appropriate level for log writer debugging.
+//
+10471, 00000, "PQ slave allocation timeout test"
+// *Document: NO
+// *Cause:
+// *Action: Set this event to enable the delay in PQ slave allocation.
+//          If the delay is longer than the preset threshold (currently 
+//          1 minute), parallel recovery should switch to serial recovery.  
+//
+10472, 00000, "dump reading log buffer hit ratio histogram to lgwr trace file"
+// *Document: NO
+// *Cause:
+// *Action: Set this event to dump reading log buffer hit rate histogram 
+//          to lgwr trace file.
+//
+10473, 00000, "enable BRR tracing"
+// *Document: NO
+// *Cause:
+// *Action: Set this event to enable tracing of Block Read Record generation.
+//
+10474, 00000, "controlfile time tracing"
+// *Document: NO
+// *Cause:
+// *Action: Set this event to enable additional tracing of the time spent
+//          in different controlfile operations.  
+//
+10475, 00000, "readable standby debug event"
+// *Document: NO
+// *Cause:
+// *Action: Set this event to enable additional tracing of readable standby.
+//
+10476, 00000, "control file corruption range testing"
+// *Document: NO
+// *Cause:
+// *Action: Set this event to enable testing of control file
+//          corruption ranges.
+//
+10477, 00000, "simulated rollback error"
+// *Document: NO
+// *Cause:
+// *Action: Set this event to simulate a rollback failure.
+//
+10478, 00000, "DBW0 file identification trace event"
+// *Document: NO
+// *Cause:
+// *Action: Set this event to enable DBW0 file identification tracing.
+//
+10479, 00000, "disk sector size test event"
+// *Document: NO
+// *Cause:
+// *Action: Set this event to let OSD return a specified sector size
+//    level  1: OSD returns 512 as the disk sector size
+//    level  2: OSD returns 4096 (emulation) as the disk sector size
+//    level  3: OSD returns 4096 (native) as the disk sector size
+//
+10480, 00000, "Soft asserts for fast detection of datafile storage problems"
+// *Document: NO
+// *Cause:
+// *Action: Set this event to enable soft asserts to fire when a corrupt or 
+//          stale block is seen in some datafile mirrors. This event allows
+//          for the proactive detection of datafile storage problems.
+//
+10483, 00000, "Simulate overly advanced incremental checkpoint"
+// *Document: NO
+// *Cause:
+// *Action: Set this event to advance the incremental checkpoint so that dirty
+//          buffers exist with low RBAs less than that of the checkpoint. This
+//          scenario will be detected and the database will be crashed in a
+//          recoverable state.
+//
+//          level 1: Generate error when linking buffer
+//          level 2: Generate error when unlinking buffer
+//
+10484, 00000, "Enable tracing for online data file move operation"
+// *Document: NO
+// *Cause:
+// *Action: Enable this event for KST tracing of online data file move operation.
+//
+10486, 00000, "Verify data file-related SGA alignment"
+// *Document: NO
+// *Cause:  
+// *Action: Enable this event to verify data file-related SGA alignment.
+10489, 00000, "Generate future redo for testing"
+// *Document: NO
+// *Cause:
+// *Action: Internal testing only. Level of non-zero generates a future
+//          informational redo change with opcode not known by this release.
+//
+10493, 00000, "Return empty define buffers on 1422"
+// *cause
+// *action: On error 1422 instead of returning data in define buffers
+//          this mimics action of version 7 and doesn't return data
+//          valid level = 1
+//
+10500, 00000, "turn on traces for SMON"
+// *Document: NO
+// *Cause:
+// *Action:
+//    Level:  <=5  trace instance recovery
+//            > 5  trace posting of SMON
+10501, 00000, "periodically check selected heap"
+// *Cause:
+// *Action:
+//    Level:  0x01 PGA
+//            0x02 SGA
+//            0x04 UGA
+//            0x08 current call
+//            0x10 user call
+//            0x20 large allocation pool
+10502, 00000, "CBO disable the fix for bug 2098120"
+// *Cause:
+// *Action:
+10503, 00000, "enable user-specified graduated bind lengths"
+// *Cause:
+// *Action:
+10505, 00000, "CBO enable dynamic sampling dump to table"
+// *Cause:
+// *Action:
+10506, 00000, "Disable fix for bug 2588217"
+// *Cause:
+// *Action:
+10507, 00000, "Trace bind equivalence logic"
+// *Cause:
+// *Action:
+10509, 00000, "Check kghu subheaps at call boundaries"
+// *Cause:
+// *Action:
+//    Level:  0x01 Call heap
+//            0x02 Session heap
+10510, 00000, "turn off SMON check to offline pending offline rollback segment"
+// *Cause:
+// *Action:
+10511, 00000, "turn off SMON check to cleanup undo dictionary"
+// *Cause:
+// *Action:
+10512, 00000, "turn off SMON check to shrink rollback segments"
+// *Cause:
+// *Action:
+10515, 00000, "turn on event to use physical cleanout"
+// *Cause:
+// *Action:
+10520, 00000, "recreate view only if definition has changed"
+// *Cause:
+// *Action:  Set this event only under the supervision of Oracle development
+// *Comment: Changes behaviour of create or replace view,
+//           comparing the new definition to the old prior to recreating the
+//           object.  Creation is skipped if old and new definitions match
+//           (ie. object has not changed).  No level number required.
+10521, 00000, "CMON connection pool test event"
+// *Document: NO
+// *Cause:
+// *Action:
+// *Comment:
+10522, 00000, "turn off wrap source compression"
+// *Cause:
+// *Action: Set this event if you do not want source of wrapped PL/SQL
+//          objects to be concatenated and stored multiple lines to a row.
+// *Comment: This event should be set if you want the source of wrapped
+//           PL/SQL objects to be stored one line per source row. The
+//           default storage method is multiple lines per row, which
+//           improves load and compile performance. No level number
+//           required.
+10524, 00000, "CMON connection pool trace event"
+// *Document: NO
+// *Cause:
+// *Action:
+// *Comment:
+10525, 00000, "Disable automatic object validation for describe"
+// *Cause:
+// *Action:
+10543, 00000, "Standby Block Media Recovery (bmr) and split brain testing event"
+// *Document: NO
+// *Cause:
+// *Action: Set this event in order to test the situation where standby bmr 
+//          does not have the necessary redo to recover a block or the situation
+//          where a split brain occurs during instance/crash recovery.
+10544, 00000, "Inject standby autobmr failures"
+// *Document: NO
+// *Cause:
+// *Action: 
+//    level: 0x01 Inject block failures that will trigger standby autobmr.
+//    level: 0x02 Print trace information of assigning CVs to undo tbs slave to trace file.
+10545, 00000, "Print standby autobmr messages in alert log"
+// *Document: NO
+// *Cause:
+// *Action: Set this event to print standby autobmr messages in alert log.
+10550, 00000, "signal error during create as select/create index after n rows"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: Set the level number to the number of rows before the error
+//           is signalled. The error will be ORA-1013 (ctrl-c)
+//
+10551, 00000, "Internal testing for ORA-1551 error handling"
+// *Cause:
+// *Action:
+10600, 00000, "check cursor frame allocation"
+// *Cause:
+// *Action:
+10601, 00000, "turn on debugging for cursor_sharing (literal replacement)"
+// *Cause:
+// *Action:
+10603, 00000, "cause an error to occur during truncate (for testing purposes)"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: this causes kdifrb to encounter an error during truncation of a
+//           table with an index.  it is for testing purposes only.
+10604, 00000, "trace parallel create index"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: enables analysis of parallel create index
+10605, 00000, "enable parallel create index by default"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: this causes all create index statement to by default
+//           occur in parallel.  it is for testing purposes only.
+//           the level set in the event is the degree of parallelism.
+// *Comment: enables analysis of parallel create index - query coordinator
+10606, 00000, "trace parallel create index"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: enables analysis of parallel create index - kkri slaves
+10607, 00000, "trace index rowid partition scan"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: enables analysis of rowid index scan - rix row source,
+//           and puts more trace on errors in range scans
+10608, 00000, "trace create bitmap index"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: enables analysis of create bitmap index - kkrb row source
+10609, 00000, "trace for array index insertion"
+// *Cause:
+// *Action: set this event to turn off the index array operation
+// *Comment: disable the index array operation
+10610, 00000, "trace create index pseudo optimizer"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+10611, 00000, "causes migration to fail - testing only"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+10612, 00000, "prints debug information for auto-space managed segments"
+// *Cause:
+// *Action:
+10613, 00000, "prints debug information for auto-space managed segments"
+// *Cause:
+// *Action:
+10621, 00000, "specify retry count for online index build cleanup DML lock get"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: Change the behaviour of online index build cleanup such that
+//           a failed DML lock get will be reattempted. The number of retries
+//           is dictated by the event level. Note that an event level of 1
+//           means try forever. Any other event level specifies the number
+//           of attempts, and is internally increased to some minimum default.
+10622, 00000, "test or trace online index build or rebuild"
+// *Cause:
+// *Document: NO
+// *Action: Set this event only under the supervision of Oracle development.
+10624, 00000, "Disable UJV invalidation on drop index"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+10626, 00000, "specify timeout for online index rebuild to wait for DML"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: Change the behaviour of an online index rebuild such that it
+//           will timeout, rather than wait indefinitely for existing DML
+//           to complete.
+//           The event level is the number of seconds the online index rebuild
+//           should wait. Values outside the legal range of 2 to 300 seconds
+//           will be adjusted automatically.
+10627, 00000, "Dump the content of the index leaf block"
+// *Cause: Generate a complete index tree dump, not just an overview
+//         during alter session set events immediate trace name treedump
+// *Action: This event is recommended only for small table/index since it
+10628, 00000, "Turn on sanity check for kdiss index skip scan state"
+// *Cause:  Will do sanity checking on the kdiss state.
+// *Action: set this event only under the supervision of Oracle development
+10629, 00000, "force online index build to backoff and retry DML lock upgrade"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: Change the behaviour of an online index rebuild such that it
+//           will backoff and retry a failed DML lock upgrade.
+//           The event level is the number of retries the online index rebuild
+//           should wait. Level 1 means backoff and retry indefinitely. Any
+//           other value less than 32 will be adjusted automatically to be 32.
+10630, 00000, "Illegal syntax specified with SHRINK clause"
+// *Cause: An illegal option was specified with the SHRINK clause
+// *Action: Verify the SQL Reference Manual and reissue the command
+10639, 00000, "Dump library cache during reparse loops"
+// *Cause: During this error a library cache dump is necessary , so enable
+//         librarycache dump if event is set.
+// *Action: Dump a library cache if this event is set when reparse error.
+//
+10649, 00000, "Turn off/trace lob index freelist coalesce"
+// *Cause:  Will turn off or trace lob index freelist coalescing
+// *Action: set this event only under the supervision of Oracle development
+10650, 00000, "disable cache-callback optimisation"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+10690, 00000, "Set shadow process core file dump type (Unix only)"
+// *Cause:    Control core file size for shadow processes
+// *Action:   Level 1:  Detach SGA before dumping core
+//            Level 2:  Do not produce any core
+10691, 00000, "Set background process core file type (Unix only)"
+// *Cause:    Control core file size file for background processes
+// *Action:   Level 1:  Detach SGA before dumping core
+10701, 00000, "Dump direct loader index keys"
+// *Cause:  Dumps index keys at various points in a direct load based on the
+//          value of this event.
+// *Action:
+// *Comment: This is bit mask, interpreted as follows:
+//            0x01: dump all keys as they are being built (use judiciously,
+//                  as this generates a lot of data!)
+//            0x02: dump index keys which cause OER(1), OER(1409), OER(1452)
+//                  errors.
+//
+10704, 00000, "Print out information about what enqueues are being obtained"
+// *Cause:  When enabled, prints out arguments to calls to ksqcmi and
+//          ksqlrl and the return values.
+// *Action: Level indicates details:
+//   Level: 1-4: print out basic info for ksqlrl, ksqcmi
+//          5-9: also print out stuff in callbacks:  ksqlac, ksqlop
+//          10+: also print out time for each line
+10707, 00000, "Simulate process death for instance registration"
+// *Cause:  When enabled, process commits suicide to test instance
+//          registration recovery code.
+// *Action: Level indicates where the process will die
+10708, 00000, "print out trace information from the RAC buffer cache"
+// *Cause: N/A
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED ONLY FOR DEBUGGING.
+10709, 00000, "enable parallel instances in create index by default"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: this causes all create index statement to by default
+//           use multiple instances.  it is for testing purposes only.
+//           the level set in the event is the number of instances.
+// *Comment: enables analysis of parallel create index - query coordinator
+10710, 00000, "trace bitmap index access"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: display the start-rowid, end-rowid of each bitmap segment - kkrbx
+//           row source
+10711, 00000, "trace bitmap index merge"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: enables analysis of bitmap index merge - kkrbu row source
+10712, 00000, "trace bitmap index or"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: enables analysis of bitmap index or - kkrbo row source
+10713, 00000, "trace bitmap index and"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: enables analysis of bitmap index and - kkrba row source
+10714, 00000, "trace bitmap index minus"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: enables analysis of bitmap index minus - kkrbm row source
+10715, 00000, "trace bitmap index conversion to rowids"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: enables analysis of bitmap index merge - kkrbt row source
+10716, 00000, "trace bitmap index compress/decompress"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: enables analysis of bitmap index compression/decompression -
+//           modules kdibc, kdibci, kdibco, kdibc3
+10717, 00000, "trace bitmap index compaction trace for index creation"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: enables analysis of bitmap index creation -
+//           modules kkrbc
+10718, 00000, "event to disable automatic compaction after index creation"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: enables isolation of index creation problems.  ie compaction
+//           is an optional part of the index creation algorithem which
+//           improves query performance and shrinks index size
+//           modules kkrbc
+10719, 00000, "trace bitmap index dml"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: enables analysis of inserts update and deletes into tables
+//           with bitmap indexes
+//           modules kkrbc
+10720, 00000, "trace db scheduling"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: traces db scheduling
+10721, 00000, "Internal testing - temp table transformation"
+// *Cause:
+// *Action:
+10722, 00000, "trace server level database scheduling"
+// *Cause:
+// *Action: Set this event only under the supervision of Oracle development.
+// *Comment: event is passed to KSKTRC* functions
+10723, 00000, "Internal testing - release buffer for buffer cache shrink"
+// *Cause:
+// *Action:
+10724, 00000, "trace cross-instance broadcast"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: enables tracing of cross-instance broadcast (KSXR)
+10725, 00000, "bitmap index version control"
+// *Cause:
+// *Action:  Set this event only under the supervision of Oracle development.
+//           The trace level is a bitfield, so use it as you would a flag.
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x0001       For bitmap indexes with version 0, DML on these bitmap
+//               indexes will be same as with 9i releases (that is, it
+//               simulates the bitmap index DML of previous releases).
+10726, 00000, "frequent itemset counting"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: enables tracing of internal execution of frequent itemset
+//           counting
+10727, 00000, "introduce failure events in IPC"
+// *Document: NO
+// *Cause:
+// *Action: Internal testing only.
+// *Comment:
+10730, 00000, "trace row level security policy predicates"
+// *Document: NO
+// *Cause:
+// *Action:
+// *Comment:
+10731, 00000, "dump SQL for CURSOR expressions"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: traces SQL statements generated to execute CURSOR expressions
+10732, 00000, "honor pctfree during insert into AQ IOTs"
+// *Document: NO
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: If set, then we will honor pctfree, during SQL INSERTs and direct
+//           kdiins0 calls from AQ, for IOTs that are used as AQ queue tables.
+10733, 00000, "test transient-IOT metadata during PMO cleanup"
+// *Document: NO
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: causes an internal error to be raised if inconsistent metadata
+//           is detected during cleanup of transient-IOTs which were left
+//           behind by failed Partition Maintenance Operations. Enable this
+//           event only during testing.
+10735, 00000, "debug ksws operations"
+// *Document: NO
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: Causes debug trace to be dumped for ksws routines
+10736, 00000, "buffer cache pin history dump"
+// *Cause:
+// *Action:  Set this event only under the supervision of Oracle development.
+//           Trace level is a bitfield.
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x0001       Force redo dump during buffer pin history dump
+//  0x0002       Disable redo dump during buffer pin history dump
+//  0x0004       Print diagnostic text for the redo dump
+//
+10737, 00000, "test block checking"
+// *Document: NO
+// *Cause:
+// *Action: Set this event only under the supervision of Oracle development.
+// *Comment: Internal testing event for block checking.
+10738, 00000, "internal block testing"
+// *Document: NO
+// *Cause:
+// *Action: Set this event only under the supervision of Oracle development.
+10739, 00000, "debug WLM (kywm) operations"
+// *Document: NO
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: Causes debug trace to be dumped for kywm routines
+10740, 00000, "disables fix for bug 598861"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: disables fix for bug 598861. The fix changes slightly the cost
+//           estimations for set queries in views, and thereby
+//           changes query plans from previous versions
+//           modules vop
+10750, 00000, "test rollback segment blksize guessing for index array insert"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: causes internal error to be raised if a transaction
+//           repeatedly (100 times) fails to bind to a rollback segment
+//           because block size is too small. (Default behaviour is to
+//           silently assume the minimum database block size possible after
+//           that many failures). Enable this event only during testing.
+10751, 00000, "override for remote row source maximum buffer size"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: To change the default value of 256000.
+10752, 00000, "override for the Exponential Moving Average factor"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: To change the default value of 50%.
+10753, 00000, "enforce deterministic behaviour for prefetching row source"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: prefetch will disregard buffer cache state and be deterministic
+//           based on level set
+//           Trace level is a bitfield.
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x0001       Always enable prefetching
+//  0x0002       Always disable prefetching
+//  0x0004       Print diagnostic text for each of the above levels, ie
+//               use level 5 to trace enabling and level 6 to trace disabling.
+10785, 00000, "LogMiner trace event"
+// *Document: NO
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+10786, 00000, "call push/pop (KSU)"
+// *Document: NO
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: enables tracing of call push/pop operations
+10787, 00000, "trace intra-instance broadcast"
+// *Document: NO
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: enables tracing of intra-instance broadcast (KSR)
+10789, 00000, "LogMiner test event"
+// *Document: NO
+// *Cause:
+// *Action: set this event only under the supervision of Oracle development
+// *Comment: changes logminer behavior for testing
+10795, 00000, "VKTM Process trace event"
+// *Document: NO
+// *Cause:
+// *Action: Set this event only under the supervision of Oracle Support Services.
+// *Comment: enable ksd/kst tracing for VKTM process
+10796, 00000, "Elevate Scheduler Priority trace event"
+// *Document: NO
+// *Cause:
+// *Action: Set this event only under the supervision of Oracle development
+// *Comment: enable ksd tracing for elevate/revert process scheduler priority
+10797, 00000, "Logical Standby Test Event"
+// *Document: NO
+// *Cause:
+// *Action: Set this event only under the supervision of Oracle development.
+// *Comment: changes logical standby behavior for testing
+10808, 00000, "Enable assert when waiting without a reason"
+// *Cause:
+// *Action: Set this event only under the supervision of Oracle development
+// *Comment: This event will catch clients that call kslwait without providing
+//           any wait reason (see bug 1743159).
+10809, 00000, "Trace state object allocate / free history"
+// *Document: NO
+// *Cause:
+// *Action: Set this event only under the supervision of Oracle development
+// *Comment: This event will trace the history of KSS allocations / deletions.
+//           level: 0 = disabled, 1 = cleanup only, 2 = always
+10826, 00000, "enable upgrade/downgrade error message trace"
+// *Cause: N/A
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED ONLY FOR DEBUGGING.
+10828, 00000, "memory allocator error"
+// *Cause: Error in the memory allocator
+// *Action: Check the trace files and other relevant output
+10830, 00000, "Trace group by sort row source"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development.
+//           trace level is a bitfield
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x0001       trace adaptive fetch usage
+//  0x0002       trace exceptions during aggregation
+//  0x0004       trace use of one comparison for all key columns
+//
+10831, 00000, "Trace group by rollup row source"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development.
+//           trace level is a bitfield
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x0001       trace use of one comparison for all key columns
+10832, 00000, "Trace approximate NDV row source"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development.
+//           trace level is a bitfield
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x0001       trace 
+10839, 00000, "trace / debug caching module (qesca.c)"
+// *Cause:
+// *Document: NO
+// *Action: Set this event only under the supervision of Oracle Development.
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x0001       trace / debug caching
+//  0x0002       dump probe / retrieve / insert cache values
+10840, 00000, "trace / debug pl/sql caching module (kkxmInitCache)"
+// *Cause:
+// *Document: NO
+// *Action: Set this event only under the supervision of Oracle Development.
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x0001       trace / debug pl/sql caching
+10842, 00000, "Event for OCI Tracing and Statistics Info"
+// *Cause: This event is meant for tracing OCI Calls and getting statistics
+// *Action: This event sets tracing OCI Calls and gets statistics info
+10843, 00000, "Event for client result cache tracing"
+// *Document: NO
+// *Cause: This is an internal event.
+// *Action: N/A
+10844, 00000, "turn on Native Net IPC debugging (skgxp)"
+// *Cause:
+// *Action: Enables debugging code for Native Net IPC (skgxp)
+10850, 00000, "Enable time manager tracing"
+// *Cause:
+// *Action:
+10851, 00000, "Allow Drop command to drop queue tables"
+// *Document: NO
+// *Cause: re-enable SQL Drop DDL for queue tables.
+// *Action: last resort to drop queue table if all other options fail. The
+//          user have to manually cleanup AQ's metadata after this operation.
+10852, 00000, "Enable tracing for Enqueue Dequeue Operations"
+// *Cause: NA
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED ONLY FOR INTERNAL TESTING.
+10854, 00000, "Sets poll count used for AQ listen code under RAC"
+// *Cause: NA
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED ONLY FOR INTERNAL TESTING.
+10856, 00000, "Disable AQ propagator from using streaming"
+// *Cause: N/A
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED ONLY FOR INTERNAL TESTING.
+10857, 00000, "Force AQ propagator to use two-phase commit"
+// *Cause: N/A
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED ONLY FOR INTERNAL TESTING.
+10858, 00000, "Crash the AQ propagator at different stages of commit"
+// *Cause: N/A
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED ONLY FOR INTERNAL TESTING.
+10859, 00000, "Disable updates of message retry count"
+// *Document: NO
+// *Cause: N/A
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED ONLY FOR DISABLING THE RETRY
+//          FEATURE IN THE EVENT THAT IT CAUSES OTHER INTERNAL ERRORS.
+10861, 000000, "disable storing extended message properties"
+// *Document: NO
+// *Cause: NA
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED ONLY TO DISABLE STORING
+//          NEW MESSAGE PROPERTIES SUCH AS SENDER_ID AND ORIGINAL_MESSAGE_ID.
+//
+10862, 00000, "resolve default queue owner to current user in enqueue/dequeue"
+// *Cause: resolve default queue owner to current user in enqueue/dequeue.
+// *Action: turn on if client wish to resolve the default queue owner to the
+//          current user. If not turned on, the default queue owner will be
+//          resolved to the login user.
+10863, 00000, "Control behavior of buffered background operations"
+// *Cause: NA
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED ONLY FOR INTERNAL TESTING.
+10864, 00000, "event to enable AQ dedicated propagation"
+// *Document: NO
+// *Cause: NA
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED.  WHEN THIS EVENT IS SET, ONE JOB QUEUE
+//          PROCESS WILL PROPAGATE FOR ONLY ONE PROPAGATION SCHEDULE
+10865, 00000, "Control tracing of notification operations"
+// *Cause: NA
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED ONLY FOR INTERNAL TESTING.
+10866, 00000, "event to order dequeue by condition"
+// *Document: NO
+// *Cause: NA 
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED.  WHEN THIS EVENT IS SET, THE DEQUEUE 
+//          ORDER THE MESSAGES BASED ON CONDITION.
+//
+10867, 00000, "turn off authentication for emon to oci client and disable HA rstat"
+// *Document: NO
+// *Cause: NA 
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED.  WHEN THIS EVENT IS SET, THERE IS NO
+//          MUTUAL AUTHENTICATION BETWEEN EMON AND OCI CLIENTS IF SET AT LEVEL 1 
+//          AND LEVEL 2 IS USED FOR DISABLING THE UPDATION OF REGISTRATION
+//          STATISTICS FOR HA NOTIFICATIONS
+//
+10870, 00000, "Disable multi-instance standby role transition"
+// *Document: No
+// *Cause:
+// *Action:  For testing purposes
+10871, 00000, "dump file open/close timestamp during media recovery"
+// *Document: No
+// *Cause:
+// *Action:   For dumping purpose.
+10872, 00000, "Flashback Database fault insertion event #%s."
+// *Document: NO
+// *Cause: Causes faults to be inserted into Flashback Database code.
+//         This should only be enabled for internal testing.
+// *Action: Level 1 - Die after restoring database, before shrinking
+//                    fuzziness.
+//          Level 2 - Die after rstoring database and after shrinking
+//                    fuzziness.
+//          Level 3 - Die after restoring control file.
+//          Level 4 - Die after set cf checkpoint during an undo of a cf change
+//          Level 5 - Die after restoring cf, before setting cf checkpoint
+//          Level 6 - Force a block checksum error on a flashback log block
+//          Level 7 - Force a file creation error during fb recovery
+//          Level 8 - Force an error after fb recovery file recreation
+//          Level 9 - Force and error during open resetlogs (after flashback)
+//         
+10874, 00000, "Change max logfiles in hashtable in krfbVerifyRedoAvailable"
+// *Document: No
+// *Cause:
+// *Action:   For testing purposes
+//
+10875, 00000, "Require instance bounce after switchover to primary"
+// *Document: No
+// *Cause:
+// *Action:   For testing purposes
+//
+10876, 00000, "IDR Test event"
+// *Document: No
+// *Cause:
+// *Action: Level 1 - x$ir_working_repair_set returns manual options.
+//                    Should only be used when testing IR framework.
+//                2 - force a failure revalidation timeout.
+//                3 - force a failure in getAdviseID.
+//                4-7 - simulate ADR timeout.
+//                8 - simulate ADR lock busy error
+//                9 - simulate OMF template name for logfile members
+//
+10890, 00000, "ADG test event"
+// *Document: NO
+// *Cause:
+// *Action:
+10900, 00000, "extent manager fault insertion event #%s"
+// *Cause: causes faults to be generated in instrumented extent code
+// *Action: this should only be enabled for internal testing
+10901, 00000, "disable the fix for bug 1230798"
+// *Cause:
+// *Action:
+10903, 00000, "Force tablespaces to become locally managed"
+// *Cause: N/A
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED ONLY FOR INTERNAL TESTING.
+10904, 00000, "Allow locally managed tablespaces to have user allocation"
+// *Cause: N/A
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED ONLY BY IMPORT CODE.
+10905, 00000, "Do cache verification (kcbcxx) on extent allocation"
+// *Cause: N/A
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED ONLY FOR DEBUGGING.
+10906, 00000, "Unable to extend segment after insert direct load"
+// *Cause: This is a restriction with insert direct load transactions.
+// *Action: When a segment has been insert direct loaded, avoid DMLs that
+//          could cause more space to be consumed.
+10910, 00000, "inject corner case events into the RAC buffer cache"
+// *Cause: N/A
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED ONLY FOR DEBUGGING.
+10911, 00000, "Locally managed SYSTEM tablespace bitmaps can be modified only under the supervision of Oracle Support"
+// *Cause: N/A
+// *Action:
+10912, 00000, "Used to perform admin operations on locally managed SYSTEM tablespace"
+// *Cause: N/A
+// *Action: The event should be used only under the supervision of
+//          Oracle Support
+10913, 00000, "Create locally managed database if compatible > 920 by default"
+// *Cause: N/A
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED ONLY FOR DEBUGGING.
+10923, 00000, "prints debug information for object space server manageability"
+// *Cause:
+// *Action:
+10924, 00000, "import storage parse error ignore event"
+// *Cause: causes server to ignore specific error associated with freelists
+//         and freelist groups when parsing
+// *Action: this should be enabled by import code only
+10925, 00000, "trace name context forever"
+// * Cause: When enabled, turns off bugfix 237911
+// * Action: set this event ONLY if necessary - after reading the README for
+//           this release or under supervision of Oracle Support.
+10926, 00000, "trace name context forever"
+// * Cause: When enabled, turns off bugfix 190119
+// * Action: set this event ONLY if necessary - after reading the README for
+//           this release or under supervision of Oracle Support.
+10927, 00000, "trace name context forever"
+// * Cause: When enabled, turns off bugfix 235190
+// * Action: set this event ONLY if necessary - after reading the README for
+//           this release or under supervision of Oracle Support.
+10928, 00000, "trace name context forever"
+// * Cause:
+// * Action: Set this event only under the supervision of Oracle Development.
+// * Comment: This event causes PL/SQL to dump out information to trace files.
+10929, 00000, "trace name context forever"
+// * Cause: When enabled, turns off bugfix 343966
+// * Action: set this event ONLY if necessary - after reading the README for
+//           this release or under supervision of Oracle Support.
+10930, 00000, "trace name context forever"
+// * Cause: When enabled, provides V7 behavior for fixed char binds
+// * Action: set this event ONLY if necessary - after reading the README for
+//           this release or under supervision of Oracle Support.
+10931, 00000, "trace name context forever"
+// * Cause: When enabled, allows normal packages to be compiled with standard
+//          extensions like "<ADT_1>"
+// * Action: Set this event only for a short amount of time.  Once the
+//           packages are compiled, this event should be turned off.
+//           Level 1   - Turn the event on
+//           Level > 1 - Turn the event off
+10932, 00000, "trace name context forever"
+// * Cause: When enabled, disables one or more features or bug fixes
+//          available only in version 8.x.
+// * Action: set this event ONLY if necessary - after reading the README for
+//           this release or under supervision of Oracle Support.
+10933, 00000, "trace name context forever"
+// * Cause: When enabled, disables one or more features or bug fixes
+//          available only in version 8.x.
+// * Action: set this event ONLY if necessary - after reading the README for
+//           this release or under supervision of Oracle Support.
+10934, 00000, "trace name context forever"
+// * Cause: When enabled, disables one or more features or bug fixes
+//          available only in version 11.x.
+// * Action: Set this event only if necessary - after reading the README for
+//           this release or under supervision of Oracle Support Services.
+10936, 00000, "trace name context forever"
+// * Cause: When enabled, disables one or more features or bug fixes
+//          available in versions 7.x and 8.x.
+// * Action: set this event ONLY if necessary - after reading the README for
+//           this release or under supervision of Oracle Support.
+10938, 00000, "trace name context forever"
+// * Cause:
+// * Action: When set, this event enables tracing of PL/SQL calls and exceptions.
+// * Comment: Setting this event could result in some performance slowdown.
+10941, 00000, "trace name context forever"
+// * Cause: When enabled, turns on PL/SQL profiler
+// * Action: set this event ONLY if necessary - after reading the README for
+//           this release or under supervision of Oracle Support.
+10943, 00000, "trace name context forever"
+// * Cause: When enabled, disables one or more features or bug fixes
+//          available only in version 8.x.
+// * Action: set this event ONLY if necessary - after reading the README for
+//           this release or under supervision of Oracle Support.
+10944, 00000, "trace name context forever"
+// * Cause: When enabled, allows or controls PL/SQL OPT code gen project.
+//          available only in version 8.2+.
+// * Action: set this event ONLY for development of the OPT project.
+//           This is not for general use or deployment.
+10946, 00000, "trace name context forever"
+// * Cause: When enabled, disables one or more features or bug fixes
+//          available only in version 10.x.
+// * Action: set this event ONLY if necessary - after reading the README for
+//           this release or under supervision of Oracle Support.
+10947, 00000, "trace name context forever"
+// * Cause: When enabled, causes various PL/SQL warnings related debugging
+//          info to be written in a trace file. Useful for debugging varous
+//          Oracle processes.  available only in version 10.x.
+// * Action: set this event ONLY if necessary - after reading the README for
+//           this release or under supervision of Oracle Support.
+10949, 00000, "Disable autotune direct path read for full table scan"
+// *Cause:
+// *Action:  Disable autotune direct path read for serial full table scan.
+10970, 00000, "backout event for bug 2133357"
+// *Cause: 2133357 dynamically sets the varying width flag and character width.
+//         Lob data which is not migrated during migration from single byte to
+//         multibyte charater set will be displayed as special characters.
+// *Action: To help migrate lob data which was not migrated during migration
+//          by backing out 2133357, so lob data can be selected and moved to
+//          multibyte character set.
+10971, 00000, "prints debugging information for LOBs"
+// *Document: No
+// *Cause:
+// *Action: None
+10972, 00000, "raise a 1551 exception in kdu_array_flush"
+// *Document: No
+// *Cause:
+// *Action: None
+10974, 00000, "Turn on LOB integrity verification"
+// *Document: No
+// *Cause:
+// *Action: None
+10975, 00000, "trace execution of parallel propagation"
+// *Document: NO
+// *Cause:
+// *Action:
+10976, 00000, "internal package related tracing"
+// *Document: NO
+// *Cause:
+// *Action:
+10977, 00000, "trace event for RepAPI"
+// *Document: NO
+// *Cause:   N/A.
+// *Action:  Set this event only under the supervision of Oracle development.
+// *Comment: Not for general purpose use.
+10978, 00000, "general event for materialized view logs"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   This internal event is used to enable various actions
+//            associated with MV logs. The event level is interpreted
+//            as a bitmap of actions to enable.
+//
+// *Comment:  Not for general purpose use.
+// LEVEL        ACTION
+//---------------------------------------------------------------------------
+// 0x0001       use asynchronous purge
+// 0x0002       use scheduled purge
+// 0x0004       log commit scn when creating MV logs
+10979, 00000, "trace flags for join index implementation"
+// *Cause:  This is an informational message.
+// *Action:  Values are as follows:
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  >  1        Dump refresh expressions (SQL) to trace file.
+//  >  999      If a complete refresh is invoked, it will not be performed
+//              but the system will assume that a complete refresh was done,
+//              causing the view to be VALID and updating timestamps. This
+//              should be used only under Oracle Support supervision.
+10981, 00000, "dscn computation-related event in replication"
+// *Document: NO
+// *Cause:    N/A.
+// *Action:
+10982, 00000, "event to turn off CDC-format MV Logs"
+// *Document: NO
+// *Cause:    N/A.
+// *Action:
+10983, 00000, "event to enable Create_Change_Table debugging"
+// *Document: NO
+// *Cause:    N/A.
+// *Action:
+10984, 00000, "subquery materialized view-related event"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Set this event only under the supervision of Oracle development.
+// *Comment:  Not for general purpose use.
+10985, 00000, "event for NULL refresh of materialized views"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Set this event only under the supervision of Oracle development.
+// *Comment:  Not for general purpose use.
+10986, 00000, "donot use HASH_AJ in refresh"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Set this event while doing refresh if the delta snapshot is small
+// *Comment:  Not for general purpose use.
+10988, 00000, "event to get exclusive lock during materialized view refresh in IAS"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Set this event if you want to get exclusive lock on the Updatable MV container table during refresh in IAS
+// *Comment:  Not for general purpose use.
+// LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  > 0       Get exclusive lock on the updatable MV container table during
+//            refresh in IAS
+10989, 00000, "event to internally create statistics MV"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   The event is internally used to create statsMV
+// *Comment:  Not for general purpose use.
+// LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  > 0
+10990, 00000, "dump spreadsheet info"
+// *Cause:
+// *Action: set this event only under the supervision of Oracle Development
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x0001       dump pruned rules during graph analysis
+//  0x0002       dump level of the rules after ordering in graph analysis
+//  0x0004       dump spreadsheet filter
+10991, 00000, "event for optimizing the online redefinition instantiation"
+10993, 00000, "Runtime enable IOQ batching"
+// *Cause:
+// *Action:
+// *Comment:  set this event only under the supervision of Oracle Development
+10995, 00000, "general event for materialized views"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   This internal event is used to enable various actions
+//            associated with MVs. The event level is interpreted
+//            as a bitmap of actions to enable.
+//
+// *Comment:  Not for general purpose use.
+// LEVEL        ACTION
+//---------------------------------------------------------------------------
+// 0x0001       enable callback-based refresh
+// 0x0002       invalidate dependents for online redef
+// 0x0004       allow PCT fast refresh after CONSIDER FRESH
+// 0x0008       do not use an extended Merge statement during MAV fast refresh
+10998, 00000, "event to enable short stack dumps in system state dumps"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   enables short stack dumps for every active process in a system
+//            state dump
+// *Comment:  set this event only under the supervision of Oracle Support
+12018, 0000, "following error encountered during code generation for \"%s\".\"%s\""
+// *Cause:  The refresh operations for the indicated materialized view could
+//          not be regenerated due to errors.
+// *Action: Correct the problem indicated in the following error messages and
+//          repeat the operation.
+12079, 00000, "do not invalidate result cache created during materialized view refresh"
+// *Cause:  Result cache created during materialized view refresh was not invalidated at end.
+// *Action: Do not set this as an event.
+//
+12099, 00000, "Don't go into fast table scan (kdst) mode"
+// *Cause:
+// *Action:  set this event only under the supervision of Oracle development
+//
+12498, 00000, ""
+// *Cause:  
+// *Action: 
+12500, 00000, "TNS:listener failed to start a dedicated server process"
+// *Cause:  The process of starting up a dedicated server process failed.
+// The executable could not be found or the environment may be set up
+// incorrectly.
+// *Action: Turn on tracing at the ADMIN level and reexecute the operation.
+// Verify that the ORACLE Server executable is present and has execute
+// permissions enabled. Ensure that the ORACLE environment is specified
+// correctly in LISTENER.ORA. The Oracle Protocol Adapter that is being 
+// called may not be installed on the local hard drive.  Please check that
+// the correct Protocol Adapter are successfully linked.
+// If error persists, contact Oracle Customer Support.
+12836, 00000, "Control delayed index maintenance event"
+// *Document: NO
+// *Cause:
+// *Action: Control whether a given index will use delayed maintenance.
+12837, 00000, "Delayed index maintenance debugging event"
+// *Document: NO
+// *Cause:
+// *Action: Control dumping of debugging information for dealyed maintenance
+12998, 00000, "Ignore errors during drop column from atb.c"
+// *Cause:
+// *Action:
+13507, 00000, "Event for Testing SYSAUX occupant view"
+// *Document: NO
+// *Cause:
+// *Action: Display the test SYSAUX occupant in the V$SYSAUX_OCCUPANT view
+13508, 00000, "Event to update INTERVAL and RETENTION in number of seconds"
+// *Document: NO
+// *Cause:
+// *Action:
+13512, 00000, "event #1 to test the top Segment Statistics"
+// *Document: NO
+// *Cause:
+// *Action: will compute the top 10 segments based on logical reads.
+13513, 00000, "event #2 to test the top Segment Statistics"
+// *Document: NO
+// *Cause:
+// *Action: will compute the top 5 segments for logical reads and wait count.
+13700, 00000, "Reserved for ADDM tracing."
+// *Cause: 
+// *Action: 
+14328, 00000, "Allow UPDATE INDEXES clause for PIOTs. To be used for testing"
+// *Document: NO
+// *Cause:
+// *Action:
+//	Level	1+	Allow UPDATE INDEXES clause for IOTs.
+14524, 00000, "Always allow partitioning. To be used only by trusted clients"
+// *Document: NO
+// *Cause:
+// *Action:
+//	Level	1+	Allow partitioning irrespective of edition.
+14525, 00000, "Fast Split event"
+// *Document: NO
+// *Cause:
+// *Action:
+//	Level	 Action
+//      0x0001   Dont try fast split
+//      0x0002   Tracing for why fast split failed
+14527, 00000, "Allow ROWID datatype for partitioning key columns"
+// *Document: NO
+// *Cause:
+// *Action:
+//      Level   1+     Allow partitioning on columns having ROWID datatype.
+//                     Note: remove this event once we fully support 
+//                     partitioning on columns with ROWID datatype in 10g+.
+14528, 00000, "simulated crash during drop table optimization"
+// *Document: NO
+// *Cause: Oracle internal testing only
+// *Action: Never set this event (to be used only for internal testing)
+14529, 00000, "copy hakan factor during ctas at facilitate exchange partition"
+// *Document: NO
+// *Cause: Oracle internal testing only
+// *Action: Never set this event unless running into bug 3747472
+14533, 00000, "Event for ALTER TABLE enhancements for code point semantics"
+// *Document: NO
+// *Cause:
+// *Action: Needs to be set to turn on fix for bug 5952255
+14534, 00000, "Event for bug 5996430 fix to be turned on"
+// *Document: NO
+// *Cause:
+// *Action: Needs to be set to turn on fix for bug 5996430
+14536, 00000, "Event to turn on row movement during CREATE TABLE"
+// *Document: NO
+// *Cause:
+// *Action:
+15159, 00000, "Internal testing event"
+// *Document: NO
+// *Cause:  Set this event only under the supervision of Oracle development.
+// *Action: Traces execution of rolling upgrade. Level indicates verbosity of 
+//          tracing.
+//
+//
+15190, 00000, "Internal ASM testing event number 15190"
+// *Document: NO
+// *Cause:  Set this event only under the supervision of Oracle development.
+// *Action: The level controls which ASM disks encounter rebalance IO errors.
+//
+15191, 00000, "Internal ASM testing event number 15191"
+// *Document: NO
+// *Cause:  Set this event only under the supervision of Oracle development.
+// *Action: The level controls which ASM errors are emulated.
+//
+15193, 00000, "Internal ASM tracing event number 15193"
+// *Document: NO
+// *Cause:  Set this event only under the supervision of Oracle development.
+// *Action: None.
+//
+15195, 00000, "Internal ASM testing event number 15195"
+// *Document: NO
+// *Cause:  Set this event only under the supervision of Oracle development.
+// *Action: The level controls which ASM errors are simulated.
+//
+15199, 00000, "Internal ASM tracing event number 15199"
+// *Document: NO
+// *Cause:  Set this event only under the supervision of Oracle development.
+// *Action: Traces execution of ASM. Level indicates verbosity of tracing.
+//
+15207, 00000, "Internal ASM testing event number 15207"
+// *Document: NO
+// *Cause:  Set this event only under the supervision of Oracle development.
+// *Action: The level controls which ASM errors are simulated.
+//
+15208, 00000, "Internal ASM testing event number 15208"
+// *Document: NO
+// *Cause:  Set this event only under the supervision of Oracle development.
+// *Action: The level controls which ASM errors are simulated.
+//
+16048, 00000, "enable simulated error on archive log write"
+// *Document: NO
+// *Cause:  Causes an I/O error to be signalled during the writing of
+//	    an archival operation.
+// *Action: No action is required.
+16141, 00000, "enable simulated archive log error"
+// *Document: NO
+// *Cause:  Causes an error to be signalled during the archival operation.
+// *Action: No action is required.
+16144, 00000, "simulate RFS error while terminal recovery in progress"
+// *Document: NO
+// *Cause:  Used for internal testing - DO NOT USE.
+// *Action: If set, value will be returned as error.
+16149, 00000, "enable simulated ARCH RAC archival testing"
+// *Document: NO
+// *Cause:  Allows ARCH archival even when RAC not enabled
+// *Action: No action is required.
+16153, 00000, "enable ARCH Physical RFS client debugging"
+// *Document: NO
+// *Cause:  Enables the ARCH physical RFS client callback.
+// *Action: No action is required.
+16158, 00000, "simulated failure during terminal recovery"
+// *Document: NO
+// *Cause:  Causes an error to be signalled during terminal recovery.
+// *Action: No action is required.
+16183, 00000, "Internal event for testing purposes"
+// *Document: NO
+// *Cause:  This is an internal event used for testing purposes
+// *Action: No action is necessary.
+16189, 00000, "Internal event for testing RTA purposes"
+// *Document: NO
+// *Cause:  This is an internal event used for testing purposes
+// *Action: No action is necessary.
+16190, 00000, "Internal event for RFS Auth testing purposes"
+// *Document: NO
+// *Cause:  This is an internal event used for testing purposes
+// *Action: No action is necessary.
+16300, 00000, "LSBY architected tracing event"
+//  *Cause:
+//  *Action:
+16301, 00000, "LSBY debug event"
+//  *Cause:
+//  *Action:
+//  *Document: NO
+16404, 0000, "Internal event for simulating software version mismatches"
+// *Document: NO
+// *Cause:  This is an Oracle internal event code.  It is used to test software
+//          version mismatches between the primary and a standby database.
+//          Setting this event causes the software version number to be
+//          incremented by the value of the event level.
+// *Action: N/A, this is an Oracle internal event code.
+16405, 0000, "Internal event for simulating software version mismatches"
+// *Document: NO
+// *Cause:  This is an Oracle internal event code.  It is used to test software
+//          version mismatches between the primary and a standby database.
+//          Setting this event causes the software version number to be
+//          decremented by the value of the event level.
+// *Action: N/A, this is an Oracle internal event code.
+16410, 00000, "enable simulated LGWR netslave infinite wait"
+// *Document: NO
+// *Cause:  Causes the LGWR to wait indefinitely to simulate network
+//          connection indefinite stall.
+// *Action: N/A, this is an Oracle internal event code.
+16414, 0000, "Event to prevent MRP from clearing online redo log files"
+// *Document: NO
+// *Cause:  This is an Oracle internal event code. This event is used to
+//          prevent the MRP process from automatically creating or clearing
+//          the online redo log files (ORLs) on a standby database.
+// *Action: N/A, this is an Oracle internal event code.
+16415, 0000, "Event to enable lock dumping"
+// *Document: NO
+// *Cause:  This is an Oracle internal event code. This event is used
+//          to enable dumping of lock structures when desired.
+// *Action: N/A, this is an Oracle internal event code.
+16421, 00000, "Event to disable streaming network I/O for Data Guard"
+// *Document: NO
+// *Cause:  This is an Oracle internal event code. This event is used
+//          to disable streaming I/O for vaious Data Guard processes.
+// *Action: N/A, this is an Oracle internal event code.
+16423, 0000, "Event to test ASM mirrors in Physical Standby"
+// *Document: NO
+// *Cause:  This is an Oracle internal event code. This event is used
+//          to test ASM mirrors in Physical Standby.
+// *Action: N/A, this is an Oracle internal event code.
+16428, 0000, "Event to set timeout value for ORA-19528 error"
+// *Document: NO
+// *Cause:  This is an Oracle internal event code. This event is used
+//          to set the timeout value for the ORA-19528 error.
+// *Action: N/A, this is an Oracle internal event code.
+16429, 0000, "Event to disable Redo Transport Compression (RTC) back-off logic"
+// *Document: NO
+// *Cause:  This is an Oracle internal event code. This event is used to
+//          disable Redo Transport Compression (RTC) back-off logic.
+// *Action: N/A, this is an Oracle internal event code.
+16430, 00000, "Event to kick off krs*.c error path tests"
+// *Document: NO
+// *Cause:  Oracle internal testing only
+// *Action: N/A, this is an Oracle internal event for test purposes (valid
+//          values are 1-26, 1 for krsa.c up through 26 for krsz.c)
+16435, 0000, "Event to bypass RFS on high destinations"
+// *Document: NO
+// *Cause:  This is an Oracle internal event code. This event is used
+//          to bypass RFS on high destinations.
+// *Action: N/A, this is an Oracle internal event code.
+16450, 00000, "Internal event for disabling ignoring of destination during open"
+// *Document: NO
+// *Cause:  This is an internal event used for testing purposes. It is use
+//          for disabling the ability to ignore max perf destinations during
+//          open of database. It is used for testing various situations
+//          with foreground death performing the open as it pertains to
+//          ignoring max perf destinations.
+// *Action: No action is necessary.
+16452, 00000, "internal event for SRL-related testing"
+// *Document: NO
+// *Cause:  This is an internal event code. This event is used  
+//          for SRL-related testing.
+// *Action: NA. This is an Oracle internal event code.
+16605, 0000, "event to control fast-start failover diagnostic tracing"
+// *Document: NO
+// *Cause:  This is an Oracle internal event code. This event is used
+//          to control fast-start failover diagnostic tracing.
+//          DO NOT USE.
+// *Action: N/A, this is an Oracle internal event code.
+16615, 0000, "event for Data Guard NetSlave testing"
+// *Document: NO
+// *Cause:  This is an Oracle internal event code. This event is used for
+//          verifying NetSlave functionality in Data Guard. DO NOT USE.
+// *Action: N/A, this is an Oracle internal event code.
+16616, 0000, "event for Data Guard monitor testing"
+// *Document: NO
+// *Cause:  This is an Oracle internal event code. This event is used for
+//          verifying Monitor functionality in Data Guard. DO NOT USE.
+// *Action: N/A, this is an Oracle internal event code.
+16634, 0000, "Event for Data Guard NetSlave tracing"
+// *Document: NO
+// *Cause:  This is an Oracle internal event code. This event is used to 
+//          control trace output of the Oracle Data Guard NetSlave process. DO 
+//          NOT USE.
+// *Action: N/A, this is an Oracle internal event code.
+16663, 0000, "event to control broker actions in the development environment"
+// *Document: NO
+// *Cause:  This is an Oracle internal event code. This event is used
+//          to control the broker actions in the development environment.
+//          DO NOT USE.
+// *Action: N/A, this is an Oracle internal event code.
+16787, 0000, "event for Oracle Data Guard broker worker process testing"
+// *Document: NO
+// *Cause:  This is an Oracle internal event code. This event is used for
+//          verifying Oracle Data Guard broker worker process functionality.
+//          DO NOT USE.
+// *Action: N/A, this is an Oracle internal event code.
+17511, 00000, "Event used internally for farm testing using RMAN seed database"
+// *Document: NO
+// *Cause: This event fixes db_name and file names in control file so that
+//         files restored from RMAN seed database works in another view.
+// *Action:
+17615, 00000, "Event to disable pre-allocation algorithm during backup"
+// *Document: NO
+// *Cause:
+// *Action:
+17616, 00000, "Event to disable pupulating V$RMAN_STATUS"
+// *Document: NO
+// *Cause: This event disables the dbsm_backup_restore functions 
+//         createRmanStatusRow, updateRmanStatusRow, and commitRmanStatusRow
+//         (the functions will be no op). 
+//         In order to limit size of rows in V$RMAN_STATUS and to delete the
+//         entire V$RMAN_STATUS use the named event KRBMRSR_LIMIT. If the
+//         level of that event is 1, then size of the V$RMAN_STATUS view
+//         will be zero so the above functions will signal ORA-19901. If the
+//         level is bigger than 1, then it sets the maximum number of rows in
+//         the V$RMAN_STATUS fixed view.
+// *Action:
+17617, 00000, "Event to disable populating V$RMAN_OUTPUT"
+// *Document: NO
+// *Cause: This event disables the dbsm_backup_restore function
+//         createRmanOutputRow (the function will be no op).
+//         In order to limit size of rows in V$RMAN_OUTPUT and to delete the
+//         entire V$RMAN_OUTPUT, use the named event KRBMROR_LIMIT. If the
+//         level of that event is 1, then size of the V$RMAN_OUTPUT view will
+//         be zero, so the function createRmanOutputRow will signal ORA-19901.
+//         If the level is bigger than 1, then level*256 is maximum number of
+//         the rows in the V$RMAN_OUTPUT fixed view.
+// *Action:
+17623, 00000, "Event to enable compression debugs in backup and restore"
+// *Document: NO
+// *Cause:
+// *Action:
+17625, 00000, "Event to test delete directory"
+// *Document: NO
+// *Cause: For internal use only.
+// *Action:
+19021, 00000, "General event for XML operations"
+// *Document: NO
+// *Cause: Disables functional evaluation of XML XPath operators on level 1
+// *Action: N/A, this is an Oracle internal event code.
+19027, 00000, "Event for supressing query rewrite with XML operators"
+// *Document: NO
+// *Cause:  This event turns off query rewrite for XML operators 
+// *Action: N/A, this is an Oracle internal event code.
+19050, 00000, "Event for adding order to SELECT from OCTs"
+// *Document: NO
+// *Cause:  This event adds ordering by array_index when selecting from OCTs.
+// *Action: N/A, this is an Oracle internal event code.
+19119, 00000, "Event for turning on XMLQuery and XMLTable function"
+// *Document: NO
+// *Cause:  This event turns on the XMLQuery and XMLTable functions
+// *Action: N/A, this is an Oracle internal event code.
+19120, 00000, "Event for changing behavior of XMLQuery and XMLTable functions"
+// *Document: NO
+// *Cause:  This event changes the behavior of the XMLQuery and XMLTable functions
+// *Action: N/A, this is an Oracle internal event code.
+19170, 00000, "Event for turning on XML Query Cost-based Rewrite"
+// *Document: NO
+// *Cause:  This event turns on the XML Query Cost-based Rewrite.
+// *Action: This is an Oracle internal event code. No action is required.
+19737, 00000, "simulate read-only database connection to execute sql query"
+// *Document: NO
+// *Cause:    Set on RMAN foreground connections when archiver was hung.
+// *Action:   Turn off plsql/sql statistics collection, obtaining the temp
+//            segment for sorting and grabbing the sequence number from disk.
+19741, 00000, "%s exceeds maximum allowable length of %s for parameter '%s'"
+// *Cause: The specified string exceeds the maximum allowable length for
+//         the parameter
+// *Action: Supply a shorter string for the parameter and retry the operation.
+19778, 00000, "event to be in hot backup mode for given seconds"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Set to test shutdown during proxy backup
+22299, 00000, "Synonym compile without validating base object"
+// *Document: No
+// *Cause:
+// *Action: No validation of the base object.
+22325, 00000, "event for create type with user version string"
+// *Cause:  
+// *Action: 
+22372, 00000, "Event for type dictionary upgrade"
+//  *Cause:  This is an internally used event for type dictionary upgrades
+//           from 8.0 to 8.1.
+//  *Action: None.
+22374, 00000, "cannot reset the version of a type with table dependents"
+//  *Cause:  The type for which reset version was requested has table
+//           dependents.
+//  *Action: None.
+22700, 00000, "object access trace event number"
+// *Cause: N/A
+// *Action: If the trace event number is set to a level greater than 0 then
+//          all the dangling REFs are dumped.
+// *Note: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//        TRANSLATED OR DOCUMENTED.
+22815, 00000, "sql name resolution event"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Sets weak name resolution on for object sql
+22820, 00000, "Event to turn off redundant join elimination by the optimizer"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Turns off redundant-join-elimination
+22821, 00000, "Event to turn off common subexpression elimination"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Turns off common subexpression elimination
+22822, 00000, "Event to accept dot notation in the insert statement"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Enables dot notation in insert statements
+22824, 00000, "Event to lookup remote objects using DDFNET for snapshots"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Enables lookup of remote objects through DDFNET for snapshots
+//            rather than using the remote transfer KGL mechanism.
+22825, 00000, "event set during import/export"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Enables logical transformation of opaque types
+22827, 00000, "Event to lookup remote objects using KGL"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Enables lookup of remote objects through the remote
+//            tranfer KGL mechanism instead of ddfnet.
+22830, 00000, "Event enabling VARRAYs columns to be created as OCTs"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Enables all VARRAY columns to be created as Ordered
+//            Collection in Tables (ie with table storage)
+22832, 00000, "Event enabling LOB columns to share the same segment"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Enables all LOB columns to share the same segment
+22834, 00000, "Event to turn off smon cleanup for transient types"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Turn off SMON cleanup for transient types. 
+//
+22836, 00000, "Event to turn on lob to char/raw silent truncation"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Do not throw error 22835 for truncation during LOB to CHAR/RAW 
+//            conversion. Truncate the data instead.
+22838, 00000, "Event to enable to allow user-level relational hint or keyword and direct updates on SYS_NC columns"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Do not throw error 22837 for user-level relational hint or 
+//            keyword, or 22839 for direct updating SYS_NC columns.
+22842, 00000, "Event to enable image conversion for evolved ADT inside an AnyData column"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Convert an old version ADT image inside an AnyData column into  
+//            its most updated version.
+22932, 00000, "event to create tables in 8.0 image format"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Causes adt columns to be stored in 8.0 format.
+22934, 00000, "event to store lob columns with very small headers"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Supports LOB column with small header
+22935, 00000, "event to create LOBs as UCS2"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Creates LOB as UCS2 on little endian machines
+23456, 00000, "flavor %s does not contain \"%s\""
+// *Cause: The flavor does not contain the given object, column, or
+//         attribute.
+// *Action: Either drop the flavor or choose a different object, column,
+//          or attribute.
+//
+24040, 00000, "AQ tracing event" 
+// *Cause: N/A
+// *Action: Event used to trace operation of AQ.
+// *Note: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//        TRANSLATED OR DOCUMENTED.
+//
+24473, 00000, "KOD tracing event"
+// *Document: NO
+// *Cause: N/A
+// *Action: Event to trace KOD data events
+//          bit 0x1: KOD_TRACE_EVENT_PIC: trace pickle operations
+//          bit 0x2: KOD_TRACE_EVENT_UPIC: trace unpickle operations
+//          bit 0x4: KOD_TRACE_EVENT_TYPE: trace pickle/unpickle a type
+//   bit 0x00004000: KOD_TRACE_LEVEL_MEDIUM: generate medium amount of tracing
+//   bit 0x00008000: KOD_TRACE_LEVEL_HIGH: generate high amount of tracing
+24793, 00000, "DTP(Distriubted Transaction Processing) test and debug"
+// *Document: NO 
+// *Cause: internal use only
+// *Action: none.
+24951, 00000, "EMON tracing event"
+// *Cause: N/A
+// *Action: Event used to trace EMON.
+// *Note: THIS IS NOT A USER ERROR NUMBER/MESSAGE. THIS DOES NOT NEED TO BE
+//        TRANSLATED OR DOCUMENTED.
+25273, 00000, "AQ QMN process alternate cleanup event"
+// *Cause: N/A.
+// *Action: event used for AQ QMN alternate cleanup mode.
+25275, 00000, "Test support for buffered queues"
+// *Cause: internal use only
+// *Action: none.
+25308, 00000, "AQ canonicalization event"
+// *Document: NO
+// *Cause:
+// *Action:
+25472, 00000, "maximum open iterators exceeded"
+// *Cause:   The open rule hit iterators in the session exceeded 
+//           2 * OPEN_CURSORS.
+// *Action:  Close some rule hit iterators.
+//
+25473, 00000, "cannot store %s in rule action context"
+// *Cause:   The user attempted to put unsupported data types, such as LOBs 
+//           and evolved ADTs, into the rule action context.
+// *Action:  Use only supported data types in rule action context.
+25476, 00000, "use pre-5523578 behaviour when looking up enabled roles"
+// *Cause:  N/A
+// *Action: Derive the enabled roles under the rules engine using the old
+//          method that existed before the fix to bug 5523578.
+26531, 00000, "replication parallel push failure recovery test event"
+// *Document: NO 
+// *Cause: N/A.
+// *Action: event used to simulate site failure for parallel push testing.
+26661, 00000, "STREAMS tracing event"
+// *Document: NO
+// *Cause:
+// *Action: Check that the type and value are correct.
+26700, 00000, "STREAMS tracing event"
+// *Document: NO
+// *Cause:
+// *Action:
+26703, 00000, "event for configuring STREAMS rules cache"
+// *Document: NO
+// *Cause: Not Applicable
+// *Action: Set this event only under the supervision of Oracle support.
+26707, 00000, "STREAMS or_expand complexity"
+// *Document: NO
+// *Cause: Not Applicable.
+// *Action: Set this event only under the supervision of Oracle Support.
+26719, 00000, "STREAMS tracing event"
+// *Document: NO
+// *Cause:
+// *Action:
+26720, 00000, "STREAMS assemble lobs event"
+// *Document: NO
+// *Cause:
+// *Action: 
+26728, 00000, "event for configuring STREAMS apply segcol mapping cache"
+// *Document: NO
+// *Cause: Not Applicable
+// *Action: Set this event only under the supervision of Oracle support.
+26739, 00000, "FILE GROUP tracing event"
+// *Document: NO
+// *Cause:
+// *Action:
+26743, 00000, "Streams tracing event"
+// *Document: NO
+// *Cause:
+// *Action:
+26749, 00000, "STREAMS propagation batch size"
+// *Document: NO
+// *Cause:
+// *Action:
+26750, 00000, "STREAMS internal transformation"
+// *Document: NO
+// *Cause:
+// *Action:
+26755, 00000, "STREAMS apply spill table partitioning event"
+// *Document: NO
+// *Cause:
+// *Action:
+26756, 00000, "STREAMS apply spill table partition ceiling event"
+// *Document: NO
+// *Cause:
+// *Action:
+26769, 00000, "STREAMS force lob assembly event"
+// *Document: NO
+// *Cause:
+// *Action: 
+27401, 00000, "Scheduler debug event"
+// *Document: NO
+// *Cause:
+// *Action:
+27402, 00000, "Scheduler tracing event"
+// *Document: NO
+// *Cause:
+// *Action:
+27605, 00000, "Smart I/O failed as a handle could not be obtained to the cell \"%s\" as the cell is not accessible."
+// *Cause:  The cell could have been unavailable.
+// *Action: Ensure the cell is available. Check the network connectivity.
+28033, 0000, "LDAP problem"
+// *Document: NO
+// *Cause:
+// *Action:
+28038, 0000, "disallow O2LOGON"
+// *Cause: turn off O2LOGON
+// *Action:
+28131, 00000, "Fine Grained Access Control enforced"
+// *Document: NO
+// *Cause:
+// *Action:
+28149, 00000, "input value for argument \"%s\" is missing"
+// *Cause: Only one input value was specified for the (NAMESPACE, ATTRIBUTE) arguments.
+// *Action: Specify an input value for both (NAMESPACE, ATTRIBUTE) arguments.
+28266, 0000, "Application Context tracing event"
+// *Document: NO
+// *Cause:  N/A
+// *Action: Debugging event for KZCTX layer.
+28269, 0000, "Event to enable overwrite of client_identifier when client_info is set"
+// *Document: NO
+// *Cause:    N/A
+// *Action: Set this event in your environment to propagate client_info session 
+//          context attribute to client_identifier.
+// *Note: THIS IS NOT A USER ERROR NUMBER/MESSAGE. THIS DOES NOT NEED TO BE
+//        TRANSLATED OR DOCUMENTED.
+//
+28361, 0000, "master key not yet set"
+// *Cause:  The master key for the instance was not set.
+// *Action: Execute the ALTER SYSTEM SET KEY command to set a master key
+//          for the database instance.
+28380, 00000, "Event to force all newly created tablespaces to be encrypted for testing"
+// *Document: NO
+// *Cause: N/A
+// *Action: Set this event in your environment to force all newly created 
+//          tablespaces to be encrypted tablespaces. It is an easy way to  
+//          convert an existing test to run with tablespace encryption. It is 
+//          used for testing only and not for security. Often run with event
+//          28381.
+// *Note: THIS IS NOT A USER ERROR NUMBER/MESSAGE. THIS DOES NOT NEED TO BE
+//        TRANSLATED OR DOCUMENTED.
+28381, 00000, "Event to bypass wallet setup for tablespace encryption"
+// *Document: NO
+// *Cause: N/A
+// *Action: Set this event in your environment to bypass wallet setup for 
+//          tablespace encryption. It uses a dummy encryption master key to 
+//          simulate encryption or decryption by the wallet, and has no wallet 
+//          dependency. It is an easy way to convert an existing test to run 
+//          with tablespace encryption. It is used for testing only and not for 
+//          security. Often run with event 28380.
+// *Note: THIS IS NOT A USER ERROR NUMBER/MESSAGE. THIS DOES NOT NEED TO BE
+//        TRANSLATED OR DOCUMENTED. 
+28382, 00000, "Global wallet operation in RAC failed"
+// *Cause: Wallet operation in RAC failed.
+// *Action: Check V$WALLET_ENCRYPTION table to verify if the wallet operation
+//          succeeded on any instance. Retry the operation.
+28383, 00000, "cannot do a PKI certificate-based Master Key migration"
+// *Cause:  A PKI certificate-based Master Key migration was not allowed.
+// *Action: Execute a symmetric Master Key migration.
+28399, 00000, "Event to disable automatic TDE wallet management in RAC"
+// *Document: NO
+// *Cause: N/A
+// *Action: Set this event in your environment to disable the automatic 
+//          management of wallet in RAC.
+28400, 00000, "Event to enable TDE tracing"
+// *Document: NO
+// *Cause: N/A
+// *Action: Set this event in your environment to obtain trace information
+//          for Transparent Data Encryption.
+// *Note: THIS IS NOT A USER ERROR NUMBER/MESSAGE. THIS DOES NOT NEED TO BE
+//        TRANSLATED OR DOCUMENTED.
+28401, 00000, "Event to disable delay after three failed login attempts"
+// *Document: NO
+// *Cause: N/A
+// *Action: Set this event in your environment to disable the login delay 
+//          which will otherwise take place after three failed login attempts.
+// *Note: THIS IS NOT A USER ERROR NUMBER/MESSAGE. THIS DOES NOT NEED TO BE
+//        TRANSLATED OR DOCUMENTED.
+28657, 00000, "Allow IOT w/o overflow though overflow is required"
+// *Cause: N/A
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED ONLY BY IMPORT CODE.
+29715, 00000, "enable global enqueue internal error checking event"
+// *Document: NO
+// *Cause:
+// *Action: check for internal errors in global enqueue service
+29717, 00000, "enable global resource directory freeze/unfreeze event trace"
+// *Document: NO
+// *Cause:
+// *Action: Dump trace for global resource directory freeze/unfreeze.
+29718, 00000, "enable global enqueue service CGS interface event trace"
+// *Document: NO
+// *Cause:
+// *Action: Dump trace for global enqueue service CGS interface.
+29719, 00000, "enable IMR split brain test event"
+// *Document: No
+// *Cause:
+// *Action: Enable specific test scenerios for various split brain tests
+29720, 00000, "enable global enqueue service SCN service event trace"
+// *Document: NO
+// *Cause:
+// *Action: Dump trace for global enqueue service SCN service.
+29722, 00000, "enable global enqueue service process death event trace"
+// *Document: NO
+// *Cause:
+// *Action: Dump trace for global enqueue service process death.
+29724, 00000, "enable global enqueue heartbeat and CSS/GIPC event trace"
+// *Document: NO
+// *Cause:
+// *Action: Dump trace for global enqueue heartbeat operations and CSS/GIPC
+29730, 00000, "use global enqueue converts to determine highest held mode"
+// *Document: NO
+// *Cause:
+// *Action: Use global enqueue converts instead of inquiry messages to 
+//          obtain highest held mode of a resource.
+29733, 00000, "enable multiple recovery domains event trace"
+// *Document: NO
+// *Cause:
+// *Action: Dump trace for ges/gcs multiple recovery domains
+29745, 00000, "Perform IMR test"
+// *Document: NO
+// *Cause:
+// *Action: Simulate various scenarios for IMR testing.
+29750, 00000, "enable CGS name service event trace"
+// *Document: NO
+// *Cause:
+// *Action: Dump CGS name service tracing
+29798, 00000, "Dump diagnostics for HA only during internal testing."
+// *Document: NO
+// *Cause:
+// *Action:
+29799, 00000, "crash for soft assert macros in global enqueue service layer"
+// *Document: NO
+// *Cause:
+// *Action: 
+29889, 00000, "allow a secondary object creation"
+// *Document: NO
+// *Cause: For internal use only
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED ONLY BY IMPORT CODE.
+29891, 00000, "enable debugging in ODCI user-defined routines"
+// *Document: NO
+// *Cause: For internal use only
+// *Action: THIS IS NOT A USER ERROR NUMBER/MESSAGE.  THIS DOES NOT NEED TO BE
+//          TRANSLATED OR DOCUMENTED. IT IS USED FOR SETTING A NEW EVENT FOR
+//          DEBUGGING SUPPORT IN ODCI USER-DEFINED ROUTINES  
+29912, 00000, "event for turning off direct invocation of Contains/Score"
+// *Document: NO
+// *Cause: For internal use only
+// *Action: Not a user error
+29974, 0000, "Internal event for PL/SQL debugging"
+// *Cause: None
+// *Action: none
+29978, 0000, "Internal event for tracing Inband Notifications"
+// *Cause: None
+// *Action: none
+29980, 0000, "Internal event for KTG crash recovery"
+// *Document: NO
+// *Cause: None
+// *Action: none
+29984, 0000, "Internal event to force CHNF registrations"
+// *Cause: None
+// *Action: none
+29986, 0000, "Internal event for CQN to enable slow path ROWID generation"
+// *Document: NO
+// *Cause:  None
+// *Action: None
+29987, 0000, "Internal event for validating context in KTG Hash Insert Item"
+// *Document: NO
+// *Cause:  None
+// *Action: None
+29988, 0000, "Event to enable blocking on client cache registrations"
+// *Document: NO
+// *Cause:  None
+// *Action: None
+30019, 00000, "Illegal rollback Segment operation in Automatic Undo mode"
+// *Cause: This operation only allowed in Manual Undo mode.
+// *Action: restart instance in Manual Undo_Management mode and retry 
+//          operation.
+30028, 00000, "Automatic Undo Management event for NTP testing"
+// *Cause: test events for internal use only
+// *Action: none.
+30030, 00000, "suppress resumable related error message"
+// *Cause: none 
+// *Action: This event is to be used if the errors 30031 and 30032
+//          wish to be suppressed.
+30047, 00000, "Internal event for kti tracing"
+// *Cause: internal use only
+// *Action: none
+30048, 00000, "Internal event for IMU auto-tuning"
+// *Cause: internal use only
+// *Action: none
+30049, 00000, "Internal event for TA enq tracing"
+// *Cause: internal use only
+// *Action: none
+30050, 00000, "Internal event for IMU private buffer leak checks"
+// *Document: NO
+// *Cause: internal use only
+// *Action: none
+30060, 00000, "Internal event for RECO tracing"
+// *Cause: internal use only
+// *Action: none
+30061, 00000, "Internal Event for Savepoint Tracing"
+// *Cause: internal use only
+// *Action: none
+30062, 00000, "Test support for ktulat latch recovery"
+// *Cause: internal use only
+// *Action: none.
+30063, 00000, "Internal Event to Test NTP"
+// *Cause: none
+// *Action: none
+30064, 00000, "Test support for two phase read only optimization"
+// *Cause: internal use only
+// *Action: none.
+30066, 00000, "test support - drop rollback segment wait"
+// *Cause: internal use only
+// *Action: none.
+30067, 00000, "Internal Event to turn on nested debugging info"
+// *Cause: none
+// *Action: none.
+30068, 00000, "Internal Event to turn on nested"
+// *Cause: none
+// *Action: none.
+30090, 00000, "Internal general event for DST patching on TIMESTAMP WITH TIME ZONE data"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   N/A
+//            Level:
+//            0x01 - trace loading of TT
+//            0x02 - trace SQL statement generation
+//            0x04 - trace RAC execution
+//            0x08 - trace DBMS_DST procedures 
+//            0x10 - allow to start an upgrade window without opening DB 
+//                   in UPGRADE mode
+//            0x20 - simulate a datapump job caller
+//            0x40 - disable the optimization of using index to find if the
+//                   data in a TSTZ column are affected
+// *Comment:  Not for general purpose use.
+//
+30302, 00000, "event to make PMON skip recovery"
+// *Document: NO
+// *Cause: 
+// *Action: Not a user error
+30303, 00000, "Internal error"
+// *Document: Internal event
+// *Cause: 
+// *Action: Not a user error
+30304, 00000, "Internal error"
+// *Document: Internal event
+// *Cause: 
+// *Action: Not a user error
+30305, 00000, "Debug mode"
+// *Document: Internal event
+// *Cause: 
+// *Action: Not a user error
+30308, 00000, "Internal error"
+// *Document: Internal error
+// *Cause: 
+// *Action: Not a user error
+30309, 00000, "Interenal"
+// *Document: NO
+// *Cause: 
+// *Action: Not a user error
+30310, 00000, "Interenal"
+// *Document: NO
+// *Cause: None
+// *Action: Not a user error
+30314, 00000, "Internal"
+// *Document: NO
+// *Cause: None
+// *Action: Not a user error
+30318, 00000, "Block Level Recovery attempted"
+// *Document: NO
+// *Cause: None
+// *Action: Not a user error
+30402, 00000, "access advisor debug/testing trace"
+// *Document: NO
+// *Cause:
+// *Action: access advisor debug/testing
+30499, 00000, "Event to dump stats used during grouping sets transformation"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Dumps column stats used during grouping sets transformation
+30981, 00000, "Internal event to configure Compact XML / Streaming XPath"
+// *Cause:   N/A
+// *Action:  Do not document.
+31049, 00000, "Internal event to turn off direct path loading of XML"
+// *Cause:   N/A
+// *Action:  Do not document.
+31098, 00000, "Internal event to turn on XDB tracing"
+// *Cause:   N/A
+// *Action:  Do not document.
+31150, 00000, "uncaught error in handler %s"
+//  *Cause:  The named handler raised an exception.
+//  *Action: Fix the identified error.
+//
+//////// 31151 - 31179 reserved for XML Schema Compiler
+31151, 00000, "Cyclic definition encountered for %s: \"%s\""
+//  *Cause: The schema definition for this type has cycles.
+//  *Action: Remove cyclic definition and re-compile schema.
+31153, 00000, "Cannot create schema URL with reserved prefix \"http://xmlns.oracle.com/xdb/schemas/\""
+//  *Cause: This prefix is reserved for XDB extended schema URLs and cannot
+//          be used in a user specified URL.
+//  *Action: Modify the prefix to a different one.
+31156, 00000, "Internal event to turn off validation during schema registration"
+//  *Cause:  N/A
+//  *Action: Do not document
+//
+31178, 00000, "Miscellaneous event for XDB"
+// *Document: NO
+// *Cause: N/A
+// *Action: N/A 
+31179, 00000, "internal XDB event for ftp test harness"
+// *Cause: N/A
+// *Action: Do not document
+//////// 31180 - 31189 reserved for PL/SQL DOM API
+31902, 00000, "access advisor debug/testing trace"
+// *Document: NO
+// *Cause:
+// *Action: access advisor debug/testing
+32333, 00000, "disable table scn update for Materialized view"
+// *Cause:  an event is set for disabling table scn update to prevent
+//          deadlock situation. (bug 1376209)
+// *Action: disable null refresh and/or base table scn update for Materialized view
+32338, 00000, "on commit refresh grab all the detailed tables"
+// *Cause:  an event is set to let on-commit MV refresh to grab all the detailed
+//          tables, no matter whether they have modified or not.
+// *Action: 
+32343, 00000, "let MVIEW engine know that it is IMPORT from 9i or earlier"
+// *Cause:   N/A.
+// *Action:  Set this event only under the supervision of Oracle development.
+//           Not for general purpose use.
+32348, 0000, "revalidate summary object based on user input"
+// *Cause: An event was set to specify the number of attempts that the system
+//         needed to make in order to validate an invalidated summary object.
+//
+// *Action: Revalidate an invalidated summary object based on user input.
+32350, 00000, "ON COMMIT refresh obtain shared lock for all the detailed tables"
+// *Cause:  An event was set to let ON COMMIT materialized view refresh to 
+//          obtain a shared lock for all the detailed tables, whether they 
+//          have been modified or not.
+// *Action: No action necessary.
+32351, 00000, "database link name cannot start with a number while creating materialized view"
+// *Cause:  This event was disabled by default. If enabled, the fix for bug
+//          6074902 will be disabled and you will be unable to create database
+//          links starting with a number when creating a materialized view
+//          on remote tables.
+// *Action: No action necessary.
+32410, 0000, "internal mv logging event"
+// *Document: NO
+// *Cause: N/A
+// *Action: To be used only under supervision of Oracle development.
+// *Comment: Not for general purpose use.
+32413, 00000, "allow concurrent refresh of materialized view and truncate"
+// *Cause:  This event is set to allow concurrent refresh of materialized view 
+//          and truncate of base table; it prevents a deadlock situation. 
+//          (bug 6710019)
+// *Action: Set this event to allow concurrent refresh of materialized view 
+//          and truncate of the base table.
+32689, 00000, "MODEL: event to turn on/off some optimizations"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Turns on/off some optimizations in MODEL evaluation.
+32697, 00000, "HTI: max agg size"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Sets max nda size
+32698, 00000, "Overshoot in index scan prefetch"
+// *Document: NO
+// *Cause:    N/A
+// *Action:
+32699, 00000, "HTI: event to dump statistics"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Dumps hash infrastructure statistics
+32762, 00000, "Turn on Temp LOB Ref Count Tracing "
+// *Cause: None
+// *Action: Check Trace file for debug info
+32763, 00000, "Turn off N-Pass Temp LOB cleanup "
+// *Cause: None
+// *Action: Facilitate debugging and testing
+////////////////////////////// SQL function on LOBs
+// Error numbers 32766 to 32770 are reserved for SQL function on LOBs
+//////////////////////////////
+32781, 00000, "Trace event for window functions"
+// *Cause:   N/A 
+// *Action:  Set this event only under the supervision of Oracle development.
+//           Trace level is a bitfield.
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0x0001       trace window functions after ordering semantics rewrite
+//  0x0002       trace statistics collected for window functions
+//  0x0004       trace ordering groups generated for window functions
+//  0x0008       trace dynamic sampling statistics expressions
+//  0x0010       trace messages for slave-2-QC communication
+//  0x0020       trace window consolidation rows
+38001, 00000, "RBO Disable constant predicate elimination optimization"
+// *Cause:
+// *Action:
+38002, 00000, "CBO enable restriction on type of join (NL only) for a query block with pushed predicate"
+// *Cause:
+// *Action:
+38003, 00000, "CBO Disable column stats for the dictionary objects in recursive SQL"
+// *Cause:
+// *Action:
+38005, 00000, "CBO disable fix for bug 2251373"
+// *Cause:
+// *Action:
+38008, 00000, "CBO disable costing  overhead of inlist iteration"
+// *Cause:
+// *Action:
+38009, 00000, "CBO disable fix for bug 2109825"
+// *Cause:
+// *Action:
+38011, 00000, "CBO disable truncation of bind when dealing with fixed char descend index expression"
+// *Cause:
+// *Action:
+38012, 00000, "CBO disable normalization of b-tree index selectivity"
+// *Cause:
+// *Action:
+38013, 00000, "CBO disable delayed ANY=>EXISTS conversion for colocated subquery of CTAS"
+// *Cause:
+// *Action:
+38014, 00000, "CBO disable grouping pruning if star_transformation is enabled"
+// *Cause:
+// *Action:
+38015, 00000, "CBO enable unnesting of more than one subquery based on CVM"
+// *Cause:
+// *Action:
+38016, 00000, "CBO disable full functional index scan"
+// *Cause:
+// *Action:
+38017, 00000, "CBO disable push of join predicate for a table with RLS"
+// *Cause:
+// *Action:
+38018, 00000, "CBO disable full statistics load for evaluation of average row length"
+// *Cause:
+// *Action:
+38021, 00000, "CBO disable view merge with multi-referenced non-deterministic function"
+// *Cause:
+// *Action:
+38023, 00000, "CBO disable fix for bug 2853398"
+// *Cause:
+// *Action:
+38025, 00000, "CBO enable generation of excessive semijoin subqueries"
+// *Cause:
+// *Action:
+38026, 00000, "CBO enable bitmap plan based on domain index, with no domain index driver"
+// *Cause:
+// *Action:
+38027, 00000, "CBO disable evaluation column gnd using inlist gnd"
+// *Cause:
+// *Action:
+38030, 00000, "CBO enable strongly connected preds for intersect to join"
+// *Cause:
+// *Action:
+38032, 00000, "CBO disable the fix for bug 3063008"
+// *Cause:
+// *Action:
+38033, 00000, "CBO disable costing of push join predicate in OJ view"
+// *Cause:
+// *Action:
+38036, 00000, "NSO disable the fix for bug 3070157"
+// *Cause:
+// *Action:
+38037, 00000, "CBO disable the fix for bug 3405237"
+// *Cause:
+// *Action:
+38038, 00000, "CBO disable the fix for bug 3168961"
+// *Cause:
+// *Action:
+38039, 00000, "CBO enable view merge/ subquery ANY=>EXISTS conversion having view(subquery) predicates in front of outer query block (connecting) predicates"
+// *Cause:
+// *Action:
+38042, 00000, "CBO disable usage of tjp when generating pruning subquery"
+// *Cause:
+// *Action:
+38044, 00000, "CBO disable expression folding at evaluation of a predicate selectivity"
+// *Cause:
+// *Action:
+38047, 00000, "CBO disable join back elimination of 1-row tables"
+// *Cause:
+// *Action:
+38048, 00000, "CBO enable the fix for bug 3400412"
+// *Cause:
+// *Action:
+38049, 00000, "CBO disable the fix for bug 3406977"
+// *Cause:
+// *Action:
+38051, 00000, "CBO disable the fix for bug 3349903"
+// *Cause:
+// *Action:
+38052, 00000, "CBO disable the fix for bug 3317309"
+// *Cause:
+// *Action:
+38054, 00000, "VOP enable the fix for bug 3537765"
+// *Cause:
+// *Action:
+38055, 00000, "CBO disable the fix for bug 3193835"
+// *Cause:
+// *Action:
+38056, 00000, "CBO disable peeking of form func(:b) bug 3668224"
+// *Cause:
+// *Action:
+38057, 00000, "CBO disable special numeric string normalization for bug 3567928"
+// *Cause:
+// *Action:
+38058, 00000, "CBO disable the fix for bug 3756797"
+// *Cause:
+// *Action:
+38060, 00000, "CBO enable the fix for bug 3517431(enable NL with view on right side)"
+// *Cause:
+// *Action:
+38063, 00000, "CBO disable the fix for bug 3903100"
+// *Cause:
+// *Action:
+38064, 00000, "CBO disable the fix for bug 3488546"
+// *Cause:
+// *Action:
+38065, 00000, "CBO disable the fix for bug 3746511"
+// *Cause:
+// *Action:
+38067, 00000, "CBO enable peeking at replaced  literal in equality(inequality) predicate"
+// *Cause:
+// *Action:
+38069, 00000, "CBO disable duplicate predicate elimination"
+// *Cause:
+// *Action:
+38074, 00000, "CBO disable the fix for bug 4275716"
+// *Cause:
+// *Action:
+38076, 00000, "CBO enables fix for bug 4258835"
+// *Cause:
+// *Action:
+38079, 00000, "SQL Diagnostic"
+// *Cause:
+// *Action:
+//
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  0            No validation performed. Service disabled
+//  1            Structural validation checks
+//  2            Internal consistency checks
+//  4            Cross-object consistency checks
+//  8            Semantic validation checks
+//  16           Trace validation service
+38090, 00000, "CBO dump virtual columns in EXPLAIN PLAN"
+// *Cause:
+// *Action:
+38098, 00000, "CBO reject various transformation even if chosen"
+// *Cause: 
+// *Action:
+//  LEVEL        ACTION
+//---------------------------------------------------------------------------
+//  1            reject OR expansion
+//  2            disable bitmap option
+38201, 00000, "assert if pin during flush"
+// *Cause: internal use only
+// *Action : enables checking for bugs in upper layers when there
+//           is a pin on a buffer or there are users for
+//           buffer and we are trying to flush the object
+//           associated with the buffer
+//
+38745, 00000, "Simulate block corruption in krf_check_block()"
+// *Document: NO
+// *Cause: This is an internal debugging event.
+// *Action: N/A
+39089, 00000, "ku trace event"
+// *Document: NO
+// *Cause:   Explicitly set.
+// *Action:  Set this event only under the supervision of Oracle development.
+// *Comment: Turn on/off various ku trace and debug features (documentation
+//           in kupp.c and kupp.h).
+39244, 00000, "Event to disable dropping null bit image header during relational select"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Do not strip off null bit image header on relational select
+//            during a Data Pump external table export.
+39505, 00000, "Transparent HA tracing event"
+// *Document: NO
+// *Cause:
+// *Action:
+39778, 0000, "the parallel load option is not allowed when loading lob columns"
+// *Cause:   An attempt was made to load lob columns using the attribute
+//           OCI_ATTR_DIRPATH_PARALLEL. This error will also be issued when
+//           loading any columns that are stored as lobs (such as varrays and
+//           xml types).
+// *Action:  Do not use the parallel attribute when loading lob columns.
+40288, 00000, "event to debug and trace mining model load"
+// *Document: NO
+// *Cause:    N/A
+// *Action:   Level 1 - force 4031 during shared model load
+//            Level 2 - trace model load info
+43801, 0000, "parallel long-to-lob debugging event"
+// *Document: NO
+// *Cause:    This is an internal debugging event.
+// *Action:   N/A
+43802, 0000, "disable probe before index leaf block delete"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle support or development.
+// *Action:   N/A
+43803, 0000, "change notification tracing for iot/indexes"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle support or development.
+// *Action:   N/A
+43806, 0000, "iot nonkey reserve length fixup"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle support or development.
+// *Action:   N/A
+43808, 0000,  "Turn on local CELL debugging"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle support or development.
+// *Action:   N/A
+43809, 0000,  "Force non-coalesced extent scans"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle support or development.
+// *Action:   N/A
+43810, 0000,  "check-and-skip corrupt blocks in index scans"
+// *Document: NO
+// *Cause:    This is an event meant for use in special data-recovery
+//            scenarios, and must be enabled only under the supervision
+//            of Oracle support or development.
+// *Action:   N/A
+43811, 0000,  "limit readahead for block sampling table/index scans"
+// *Document: NO
+// *Cause:    This is an event meant for use in scenarios where the default
+//            "db_file_multiblock_read_count" computed for the RDBMS is
+//            too large, and smaller values provide better IO/elapsed-time
+//            performance for sampling scans at low sampling rates.
+//            The event should be used only after consultation with
+//            Oracle support or development.
+// *Action:   N/A
+43812, 0000,  "avoid online index (re)build cleanup on specific errors"
+// *Document: NO
+// *Cause:    This is an event meant for use in scenarios where the
+//            cleanup of a failed online index (re)build operation should
+//            be skipped, depending on the error that occurred. The
+//            error code is the value of this event. The event should
+//            be used only after consultation with Oracle support or
+//            development, and for internal debugging purposes.
+// *Action:   N/A
+43815, 0000,  "Turn on local CELL INDEX debugging"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle support or development.
+// *Action:   N/A
+43820, 0000,  "#block rejections in space reclamation before segment extension"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle Support Services
+//            or development.
+// *Action:   N/A
+43821, 0000,  "b+tree level to enable rejection limit"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle Support Services
+//            or development.
+// *Action:   N/A
+43822, 0000,  "enable/disable/trace rejection heuristic"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle Support Services
+//            or development.
+// *Action:   N/A
+43865, 0000, "SECUREFILE LOBs WGC layer fast callbacks disabling event"
+// *Document: NO
+// *Cause:    This is an internal debugging event and must be enabled
+//            only under the supervision of Oracle Support Services 
+//            or development.
+// *Action:   N/A
+43866, 0000, "SECUREFILE LOBs RCI layer fastpath inline read disabling event"
+// *Document: NO
+// *Cause:    This is an internal debugging event and must be enabled
+//            only under the supervision of Oracle Support Services
+//            or development.
+// *Action:   N/A
+43869, 0000, "SECUREFILE LOBs WGC layer crash testing event"
+// *Document: NO
+// *Cause:    This is an internal debugging event and must be enabled
+//            only under the supervision of Oracle Support Services 
+//            or development.
+// *Action:   N/A
+43870, 0000, "SECUREFILE lobs WGC layer tracing event"
+// *Document: NO
+// *Cause:    This is an internal debugging event and must be enabled
+//            only under the supervision of Oracle Support Services 
+//            or development.
+// *Action:   N/A
+43871, 0000, "SECUREFILE LOBs WGC layer in-memory read disabling event"
+// *Document: NO
+// *Cause:    This is an internal debugging event and must be enabled
+//            only under the supervision of Oracle Support Services or 
+//            development.
+// *Action:   N/A
+43872, 0000, "SECUREFILE LOBs WGC layer shared I/O buffer disabling event"
+// *Document: NO
+// *Cause:    This is an internal debugging event and must be enabled
+//            only under the supervision of Oracle Support Services or 
+//            development.
+// *Action:   N/A
+43873, 0000, "SECUREFILE LOBs WGC layer shared I/O buffer forcing event"
+// *Document: NO
+// *Cause:    This is an internal debugging event and must be enabled
+//            only under the supervision of Oracle Support Services or 
+//            development.
+// *Action:   N/A
+43874, 0000, "SECUREFILE LOBs WGC layer SGA buffer forcing event"
+// *Document: NO
+// *Cause:    This is an internal debugging event and must be enabled
+//            only under the supervision of Oracle Support Services or
+//            development.
+// *Action:   N/A
+43875, 0000, "SECUREFILE lobs transformation layer tracing event"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle support or development.
+// *Action:   N/A
+43876, 0000, "SECUREFILE lob transformation feature \"%s\" not yet supported"
+// *Document: NO
+// *Cause:    This is an internal event to be used only in the development
+//            and testing phase, to allow incremental implementation.
+// *Action:   Wait till the feature is supported.
+43877, 0000, "SECUREFILE LOB memory pressure simulation event"
+// *Document: NO
+// *Cause:    This is an internal event to be used only in the development
+//            and testing phase, to simulate memory pressure conditions.
+// *Action:   N/A
+43879, 0000, "SECUREFILE lobs deduplication facility testing event"
+// *Document: NO
+// *Cause:    This is an internal testing event, and must be enabled
+//            only under the supervision of Oracle support or development.
+// *Action:   N/A
+43880, 0000, "SECUREFILE lobs rci flushing event"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle support or development.
+// *Action:   N/A
+43881, 0000, "SECUREFILE lobs delta update debugging event"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle support or development.
+// *Action:   N/A
+43882, 0000, "SECUREFILE LOBs delta update testing event"
+// *Document: NO
+// *Cause:    This is an internal testing event, and must be enabled
+//            only under the supervision of Oracle support or development.
+// *Action:   N/A
+43884, 0000, "SECUREFILE LOB mapping service debugging event"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle Support Services or
+//            development.
+// *Action:   N/A
+43896, 0000,  "SECUREFILE internal event for CTX testing"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle Support Services or
+//            development.
+// *Action:   N/A
+43897, 0000,  "SECUREFILE internal event for SQL"
+// *Document: NO
+// *Cause:    This is an internal testing event, and must be enabled
+//            only under the supervision of Oracle support or development.
+// *Action:   N/A
+43899, 0000, "SECUREFILE lobs inode tracing event"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle support or development.
+// *Action:   N/A
+43901, 0000, "sampling repeatibility event"
+// *Document : NO
+// *Cause    : This event is used to prevent intermittent difs caused by
+//             sampling inrepeatibility.
+// *Action   : N/A   
+43902, 0000, "qksDestroyServices debugging event"
+// *Document : NO
+// *Cause    : This event is used to dump debugging information when 
+//             qksDestroyServices is executed.
+// *Action   : N/A   
+43903, 0000, "always result-cache node"
+// *Document: NO
+// *Cause:    This is an internal debugging event.
+// *Action:   N/A
+43905, 0000, "result cache tracing event"
+// *Document: NO
+// *Cause:    This is an internal event.
+// *Action:   N/A
+44405, 0000, "parse enabled for segment attributes of IOT mapping table"
+// *Document: NO
+// *Cause:    An internal event was triggered during the import as part of
+//            the fix for bug 4375555. This event allows specification
+//            of segments attributes of IOT mapping tables.
+// *Action:   N/A
+44951, 0000, "ASSM BasicFile Bulk reclaim event"
+// *Document : NO
+// *Cause    :  This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle support or development.
+// *Action   : NA
+44952, 0000, "ASSM BasicFile Enqueue Hash reclaim event"
+// *Document : NO
+// *Cause    :  This is an internal event, and must be enabled
+//            only under the supervision of Oracle support or development.
+// *Action   : NA
+45097, 0000, "SECUREFILE LOBs DBFS HS streaming test event"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle Support Services or
+//            development.
+// *Action:   N/A
+45098, 0000, "SECUREFILE LOBs DBFS HS debug event"
+// *Document: NO
+// *Cause:    This is an internal debugging event and must be enabled
+//            only under the supervision of Oracle Support Services or
+//            development.
+// *Action:   N/A
+45300, 0000, "internal primary-side LogMiner tracing event"
+// *Document: NO
+// *Cause:    This is an internal debugging event and must be enabled
+//            only under the supervision of Oracle Support Services or
+//            development.
+// *Action:   N/A
+//
+/////////////////////////////////////////////////////////////////////////////
+//    45400 - 45499 reserved for DBMS_ROLLING PL/SQL package
+/////////////////////////////////////////////////////////////////////////////
+46049, 00000, "XS Security - Data Security tracing event"
+// *Document: NO
+// *Cause:    This is an internal debugging event and must be enabled
+//            only under the supervision of Oracle Support Services
+//            or development.
+// *Action:   N/A
+//
+/////////////////////////////////////////////////////////////////////////////
+//  46050 - 46100 Reserved for XS Security Sessions (XSS)
+/////////////////////////////////////////////////////////////////////////////
+46148, 00000, "XS Security - Application Session tracing event"
+// *Document: NO
+// *Cause:    This is an internal debugging event and must be enabled
+//            only under the supervision of Oracle Support Services
+//            or development. 
+// *Action:   N/A
+46149, 00000, "XS Security - Security Classes tracing event"
+// *Document: NO
+// *Cause:    This is an internal debugging event and must be enabled
+//            only under the supervision of Oracle Support Services
+//            or development.
+// *Action:   N/A
+46150, 00000, "XS Security - XS Principals tracing event"
+// *Document: NO
+// *Cause:    This is an internal debugging event and must be enabled
+//            only under the supervision of Oracle Support Services 
+//            or development. 
+// *Action:   N/A
+46151, 00000, "XS Security - MidTier Caches tracing event"
+// *Document: NO
+// *Cause:    This is an internal debugging event and must be enabled
+//            only under the supervision of Oracle Support Services
+//            or development.
+// *Action:   N/A
+47388, 00000, "Database Vault disable-factor-loading event"
+// *Document: NO
+// *Cause:
+// *Action:
+47389, 00000, "Database Vault static-ruleset-evaluation event"
+// *Document: NO
+// *Cause:
+// *Action:
+47998, 00000, "Database Vault tracing event"
+// *Document: NO
+// *Cause:
+// *Action:
+55500, 0000, "Event to be used for different trace levels"
+// *Cause: None.
+// *Action: Change level for desired tracing in Flashback Transaction Backout.
+55509, 0000, "Creation of dependencies could not finish"
+// *Cause: One or more input transaction or any of its dependents are not 
+//         committed or have been aborted after more than 1 minute of calling
+//         the backout function.
+// *Action: Commit all the active transactions associated with this table and
+//          try again.
+55516, 0000, "Event to dump the LCR's seen by flashback transaction backout to trace file"
+// *Cause: None.
+// *Action: Set it to 0 for real flashback transaction. If this is set,
+//          flashback transaction will not proceed.
+55550, 0000, "Event to be used for testing ktubu extensions"
+// *Cause: None.
+// *Action: None
+55551, 0000, "Trigger 4136 corruption"
+55552, 0000, "Trigger 4137 corruption"
+55553, 0000, "Trigger 4139 corruption"
+55554, 0000, "Trigger 4140 corruption"
+55555, 0000, "Trigger 4152 corruption"
+55556, 0000, "Trigger 4143 corruption"
+55557, 0000, "Trigger 4144 corruption"
+// *Cause: Above events used for testing corruption path
+// *Action: None
+55559, 0000, "Test proactive txn health check"
+55560, 0000, "Test reactive txn health check"
+55606, 00000, "Event to modify archiver sleep time in seconds"
+// *Cause: 30 seconds is recommended as the archiver sleep time for tests.
+// *Action: The default archiver sleep time is 300 seconds
+//
+55607, 00000, "Event to enable debugging of archiver"
+// *Cause: The purpose of this event is for debugging.
+// *Action: Attach to process specified.
+//
+55615, 00000, "Event to test archiver scheduled internal tasks"
+// *Cause: The purpose of this event is for testing.
+// *Action: No action required.
+//
+55629, 00000, "Event to test Flashback Archiver internal management tasks"
+// *Cause: The purpose of this event is for testing.
+// *Action: No action required.
+//
+55700, 00000, "Disable MinActiveTxnStartScn block cleanout optimization"
+// *Document: NO
+// *Cause: 
+// *Action: Set this event only under the supervision of Oracle Support
+// Services or development.
+//
+55701, 00000, "Turn OFF HP Exadata Storage Server Commit Cache"
+// *Document: NO
+// *Cause:
+// *Action: Turns off the HP Exadata Storage Server Commit Cache; Set this
+//  event only under the supervision of Oracle Support Services or development.
+//
+55801, 00000, "Event to control CR activity"
+// *Cause: The bit values that we consider.
+//   0x1: Remove fix for bug 3514835 which could potentially throw more 8177 errors
+//        We have conservatively blocked some serializability errors, where there
+//        could potentially be a dependency between a service transaction in an
+//        index and forward going transaction.
+// *Action: Set event 55801 to 1 to disable the bug fix, thereby reducing 8177
+//          error, although it might cause some internal errors instead.
+56724, 00000, "ksfd calibration tracing"
+// *Cause:
+// *Action: If this event is set then ksfd calibration module generates
+//          tracing
+56801, 00000, "ksz trace event"
+// *Document: NO
+// *Cause:   Explicitly set.
+// *Action:  Set this event only under the supervision of Oracle development.
+// *Comment: Turn on/off various ksz trace and debug features (documentation
+//           in ksz.c).
+56802, 00000, "ksz test event"
+// *Document: NO
+// *Cause:   Explicitly set.
+// *Action:  Set this event only under the supervision of Oracle development.
+// *Comment: Turn on/off various ksz testing features (documentation
+//           in ksz.c).
+60000, 00000, "SECUREFILE block checking fault injection event"
+// *Document: NO
+// *Cause:  This is an internal debugging event only
+// *Action65068: N/A
+//
+60022, 00000, "Internal event"
+// *Document: NO
+// *Cause:  
+// *Action: Contact Oracle Support Services
+//
+60025, 00000, "Event for temp segment cleanup used for temp lobs"
+// *Document: YES
+// *Cause: Temp LOB segments used for temporary LOBs are deleted
+//         only on session exit which may lead to large amounts of memory
+//         being held across multiple sessions.
+// *Action: Setting this event will cause temporary LOB segments
+//          to be freed when there are no active temporary LOBs in
+//          the session.  Setting this event will have a significant
+//          performance impact as it can cause temporary lob segments
+//          to be allocated and deleted many times during a session
+//          rather than once per session.  Use this event only when
+//          temporary LOB segment memory use is an issue. 
+//
+60038, 00000, "SECUREFILE space double allocation checking event"
+// *Document: NO
+// *Cause:  This is an internal debugging event only
+// *Action: N/A
+//
+60051, 00000, "space preallocation tracing event"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle Support Services or 
+//            development.
+// *Action:   N/A
+60055, 00000, "Internal debugging event"
+// *Document: NO
+// *Cause:    This is an internal debugging event used for dropping
+//            temporary segments in SMON instead of in slave process.
+// *Action:   N/A
+60056, 00000, "Internal debugging event"
+// *Document: NO
+// *Cause:    This is an internal debugging event used for simulating 
+//            segment creation error. 
+// *Action:   N/A
+60060, 00000, "extent allocation alignment event"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle Support Services or 
+//            development.
+// *Action:   N/A
+60061, 00000, "temporary space management tracing event"
+// *Document: NO
+// *Cause:    This is an internal debugging event, and must be enabled
+//            only under the supervision of Oracle Support Services or 
+//            development.
+// *Action:   N/A
+60063, 00000, "Oracle temporary file creation does not allocate space on file systems."
+// *Document: NO
+// *Cause:    Oracle temporary file creation did not allocate space on file systems                     until it was needed. This enables fast creation of temporary files with                   no system overhead.
+// *Action:   Enable this event to have Oracle fill empty blocks in temporary files on                  file creation.
+60070, 00000, "ILM activity tracking disabled due to multiple errors"
+// *Document: NO
+// *Cause:  This is an internal event 
+// *Action: N/A
+//
+60071, 00000, "internal debugging event to disable SecureFile UFS reservation"
+// *Document: NO
+// *Cause:    This is an internal debugging event and must be enabled
+//            only under the supervision of Oracle Support Services or 
+//            development.
+// *Action:   N/A
+62029, 00000, "DBMS_DUMA_INTERNAL tracing event"
+// *Document: NO
+// *Cause: Debugging event for DBMS_DUMA_INTERNAL callouts. 
+// *Action: N/A
+// *Comment: Level is a bit mask documented in prvtdumi.sql
+//
+62030, 00000, "split brain event"
+// *Document: NO
+// *Cause: Debugging event that triggers a split brain after the first pass 
+//         of instance or crash recovery by making the first pass of crash
+//         recovery generate redo at the nab
+// *Action: N/A 
+// *Comment: _allow_error_simulation must be enabled
+//
+/////////////////////////////////////////////////////////////////////////////
+
+Directly from Dennis's file:
+88888 checked in kcisessend(). if off, execution of kcisessend() function will
+be skipped
+99942
+99999 checked in koktalt()
+999000 checked in ktugusc(). if not zero: dump call stack before exit using
+ksedst()
+
+
+
+My manual entry:
+
+
+62031, 00000, "QESXL internal tracing event"
+// *Document: NO
+// *Cause: Debugging event for QE[RS]XL key vector
+// *Action: N/A
+// *Comment: Level is a bit mask documented in qesxl.h
+62032, 00000, "QESXL SO testing event"
+// *Document: NO
+// *Cause: Debugging event for testing key vector state object recovery
+// *Action: N/A
+// *Comment: Level is a bit mask documented in qesxl.h
+62033, 00000, "QESGV internal tracing event"
+// *Document: NO
+// *Cause: Debugging event for QE[RS]GV vector group-by
+// *Action: N/A
+// *Comment: Level is a bit mask documented in qesgv.h
+
+
+64200, 00000, "Internal event to control collection storage during create table"
+//  *Cause:  N/A
+//  *Action: Do not document
+
+
+64365, 00000, "In-memory column store FastStart debug event"
+// *Document: NO
+// *Cause: N/A
+// *Action: N/A
+
+64366, 00000, "In-memory column store FastStart internal error"
+// *Document: NO
+// *Cause: N/A
+// *Action: N/A
+
+
+64478, 00000, "fix invalid XDB schema types"
+// *Document: NO
+// *Cause:   Internally used to fix invalid XDB schema types in a pluggable
+//           database.
+// *Action:
