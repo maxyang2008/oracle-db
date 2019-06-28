@@ -16,7 +16,7 @@ SELECT INST_ID,
               'ON CPU',
               'WAITED KNOWN TIME',
               'ON CPU',
-              STATE) ״̬,
+              STATE),
        COUNT(*)
   FROM GV$SESSION S
  WHERE S.STATUS = 'ACTIVE'
