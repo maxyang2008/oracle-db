@@ -1,32 +1,21 @@
-SELECT aa.inst_id          ±»×èÊµÀı,
-       aa.sid              ±»×è»á»°,
-       aa.sql_text         ±»×èsql,
-       aa.module           ±»×èÄ£¿é,
-       aa.event            ÊÂ¼ş,
-       bb.inst_id          ×èÊµÀı,
-       bb.blocking_session ×è»á»°,
-       bb.sql_text         ×èsql
-  from (SELECT distinct a.sid,
-                        a.sql_id,
-                        a.inst_id,
-                        a.blocking_instance,
-                        a.blocking_session,
-                        s.sql_text,
-                        a.module,
-                        a.event
-          FROM gv$session a, gv$sql s
-         where a.sql_id = s.sql_id
-           and a.blocking_session is not null) aa
- INNER JOIN (SELECT distinct a.sid,
-                             a.sql_id,
-                             a.inst_id,
-                             a.blocking_instance,
-                             a.blocking_session,
-                             s.sql_text,
-                             a.module,
-                             a.event,
-                             a.event
-               FROM gv$session a, gv$sql s
-              where a.sql_id = s.sql_id) bb
-    ON a.blocking_session = b.sid
-   and a.blocking_instance = b.inst_id;
+SELECT S1.SID,
+       S1.USERNAME,
+       S1.PROGRAM,
+       S1.MODULE,
+       S1.EVENT,
+       S1.STATE,
+       S1.SECONDS_IN_WAIT,
+       S2.SID               é€ æˆé”SID,
+       S2.USERNAME          é€ æˆé”USERNAME,
+       S2.PROGRAM           é€ æˆé”PROGRAM,
+       S2.MODULE            é€ æˆé”MODULE,
+       S2.CLIENT_IDENTIFIER é€ æˆé”ç”¨æˆ·è¯†åˆ«,
+       O.OWNER              é”çš„å¯¹è±¡OWNER,
+       O.OBJECT_NAME        é”çš„å¯¹è±¡,
+       S2.SQL_ID            é€ æˆé”SQL_ID,
+       S2.PREV_SQL_ID       é€ æˆé”ä¸Šæ¬¡SQL_ID
+  FROM V$SESSION S1, V$LOCKED_OBJECT LO, V$SESSION S2, DBA_OBJECTS O
+ WHERE S1.BLOCKING_SESSION = S2.SID
+   AND LO.SESSION_ID = S2.SID
+   AND LO.OBJECT_ID = O.OBJECT_ID
+   ;
